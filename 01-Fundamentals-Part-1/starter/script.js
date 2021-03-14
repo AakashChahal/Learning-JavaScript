@@ -114,3 +114,18 @@ switch (language) {
         break;
 }
 // END OF ASSIGNMENT - 9 //
+
+// ASSIGNMENT- 10 //
+population >= avPopulation
+    ? console.log(`${country}'s population is above average`)
+    : console.log(`${country}'s population is below above average`);
+
+// OR //
+
+// console.log(
+//     `${country}'s population is ${
+//         population >= avPopulation ? "above" : "below"
+//     } average`
+// );
+
+// END OF ASSIGNMENT - 10 //
