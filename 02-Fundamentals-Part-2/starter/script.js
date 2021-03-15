@@ -70,3 +70,13 @@ const percentages = [
 ];
 console.log(percentages);
 // END //
+
+// ASSIGNMENT #6 //
+const neighbours = ["Ireland", "SomeOtherCountry", "OneMoreCountry"];
+neighbours.push("Utopia");
+neighbours.pop();
+if (!neighbours.includes("Germany"))
+    console.log("Probably not a central European country :D");
+neighbours[1] = "Republic of Some Country";
+console.log(neighbours);
+// END //
