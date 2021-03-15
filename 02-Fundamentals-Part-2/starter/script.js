@@ -51,10 +51,22 @@ console.log(pop7, pop8, pop9);
 // ASSIGNMENT #4 //
 const describePopulation = function (country, population) {
     const populationPercentInWorld = percentageOfWorld3(population);
-    const description = `${country} has ${population} million people, which is about ${populationPercentInWorld}% of thw world.`;
+    const description = `${country} has ${population} million people, which is about ${populationPercentInWorld}% of the world.`;
     return description;
 };
 console.log(describePopulation("India", 1300));
 console.log(describePopulation("England", 56));
 console.log(describePopulation("Scotland", 5.45));
+// END //
+
+// ASSIGNMENT #5 //
+const population = [1330, 56, 5.45, 55];
+console.log(population.length === 4);
+const percentages = [
+    percentageOfWorld3(population[0]),
+    percentageOfWorld3(population[1]),
+    percentageOfWorld3(population[2]),
+    percentageOfWorld3(population[3]),
+];
+console.log(percentages);
 // END //
