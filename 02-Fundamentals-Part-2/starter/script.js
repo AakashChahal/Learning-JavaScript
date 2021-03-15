@@ -80,3 +80,40 @@ if (!neighbours.includes("Germany"))
 neighbours[1] = "Republic of Some Country";
 console.log(neighbours);
 // END //
+
+// ASSIGNMENT #7 + #8 //
+const myCountry = {
+    country: "India",
+    capital: "Delhi",
+    language: "Hindi",
+    population: 1300,
+    neighbours: ["one country", "second country", "another country"],
+};
+console.log(
+    `${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.`
+);
+myCountry.population += 2;
+console.log(
+    `${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.`
+);
+myCountry["population"] -= 2;
+console.log(
+    `${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.`
+);
+// END //
+
+// ASSIGNMENT #9 //
+myCountry.describe = function () {
+    console.log(
+        `${this.country} has ${this.population} million ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}.`
+    );
+};
+myCountry.describe();
+myCountry.checkIsland = function () {
+    this.neighbours.length === 0
+        ? (this.isIsland = true)
+        : (this.isIsland = false);
+    return this.isIsland;
+};
+console.log(myCountry.checkIsland());
+// END //
