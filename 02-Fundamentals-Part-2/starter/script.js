@@ -1,11 +1,11 @@
 "use strict";
 
-let hasDriverLicense = false;
-const passedTest = true;
+// let hasDriverLicense = false;
+// const passedTest = true;
 
-if (passedTest) hasDriverLicense = true;
+// if (passedTest) hasDriverLicense = true;
 
-console.log(hasDriverLicense);
+// console.log(hasDriverLicense);
 
 // ASSIGNMENT #1 //
 function describeCountry(country, population, capitalCity) {
