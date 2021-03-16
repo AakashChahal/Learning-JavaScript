@@ -1,3 +1,4 @@
+"use strict";
 // CHALLENGE #1 //
 const calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
 const checkWinner = function (avgDolhins, avgKoalas) {
@@ -24,4 +25,39 @@ console.log("tips array: ");
 console.log(tips);
 console.log("total bills array: ");
 console.log(total);
+// END //
+
+// CHALLENGE #3 //
+const markObj = {
+    fullName: "Mark Miller",
+    mass: 78,
+    height: 1.69,
+    BMI: function () {
+        this.bmi = this.mass / (this.height * this.height);
+        return this.bmi;
+    },
+};
+markObj.BMI();
+
+const johnObj = {
+    fullName: "John Smith",
+    mass: 92,
+    height: 1.95,
+    BMI: function () {
+        this.bmi = this.mass / this.height ** 2;
+        this.bmi;
+    },
+};
+johnObj.BMI();
+
+if (markObj.bmi > johnObj.bmi) {
+    console.log(
+        `${markObj.fullName}'s BMI (${markObj.bmi}) is higher than ${johnObj.fullName}'s (${johnObj.bmi})!`
+    );
+} else if (johnObj.bmi > markObj.bmi) {
+    console.log(
+        `${johnObj.fullName}'s BMI (${johnObj.bmi}) is higher than ${markObj.fullName}'s (${markObj.bmi})!`
+    );
+}
+
 // END //
