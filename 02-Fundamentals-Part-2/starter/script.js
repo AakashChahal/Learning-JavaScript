@@ -117,3 +117,42 @@ myCountry.checkIsland = function () {
 };
 console.log(myCountry.checkIsland());
 // END //
+
+// ASSIGNMENT #10 //
+for (let voter = 1; voter <= 50; voter++) {
+    console.log(`Voter number ${voter} is currently voting.`);
+}
+// END //
+
+// ASSIGNMENT #11 //
+const percentages2 = [];
+for (let i = 0; i < population.length; i++) {
+    percentages2.push(percentageOfWorld1(population[i]));
+}
+console.log(percentages);
+console.log(percentages2);
+// END //
+
+// ASSIGNMENT #12 //
+const listOfNeighbours = [
+    ["Canada", "Mexico"],
+    ["Spain"],
+    ["Norway", "Sweden", "Russia"],
+];
+for (let i = 0; i < listOfNeighbours.length; i++) {
+    for (let j = 0; j < listOfNeighbours[i].length; j++) {
+        console.log(`Neighbour: ${listOfNeighbours[i][j]}`);
+    }
+}
+// END //
+
+// ASSIGNMENT #13 //
+let percentages3 = [];
+let i = 0;
+while (i < population.length) {
+    const perc = percentageOfWorld3(population[i]);
+    percentages3.push(perc);
+    i++;
+}
+console.log(percentages3);
+// END //
