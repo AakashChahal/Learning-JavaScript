@@ -59,5 +59,25 @@ if (markObj.bmi > johnObj.bmi) {
         `${johnObj.fullName}'s BMI (${johnObj.bmi}) is higher than ${markObj.fullName}'s (${markObj.bmi})!`
     );
 }
+// END //
 
+// CHALLENGE #4 //
+const bills2 = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips2 = [],
+    totals2 = [];
+for (let i = 0; i < bills2.length; i++) {
+    tips2.push(calcTip(bills2[i]));
+    totals2.push(bills2[i] + tips2[i]);
+}
+const calcAverage2 = function (arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    return sum / arr.length;
+};
+console.log(`bills: ${bills2}`);
+console.log(`tips: ${tips2}`);
+console.log(`totals: ${totals2}`);
+console.log(`Average: ${calcAverage2(totals2)}`);
 // END //
