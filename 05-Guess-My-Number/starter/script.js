@@ -1,11 +1,24 @@
 "use strict";
 // document.querySelector('.message').textContent = '⬆⬇Correct Wrong Answer';
 // document.querySelector('.guess').value = 100;
-let lives = 5;
+let lives = 0;
 let answer = Math.trunc(Math.random() * 20 + 1);
-console.log(answer);
 // console.log(answer);
-let contGame = true;
+
+document.querySelector(".easy").addEventListener("click", () => {
+    lives = 10;
+    document.querySelector(".lives").textContent = lives;
+});
+
+document.querySelector(".med").addEventListener("click", () => {
+    lives = 5;
+    document.querySelector(".lives").textContent = lives;
+});
+
+document.querySelector(".hard").addEventListener("click", () => {
+    lives = 3;
+    document.querySelector(".lives").textContent = lives;
+});
 
 const isGuessCorrect = function (value) {
     if (value !== answer) {
