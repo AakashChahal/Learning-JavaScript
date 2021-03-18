@@ -56,6 +56,16 @@ h1 {
     transform: translate(-50%, -50%);
 }
 
+.correct {
+    font-size: 2rem;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 90%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
 .number {
     background: #eee;
     color: #333;
