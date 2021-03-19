@@ -14,6 +14,8 @@ const btnRoll = document.querySelector(".btn--roll");
 const btnNewGame = document.querySelector(".btn--new");
 const btnHold = document.querySelector(".btn--hold");
 
+const results = document.querySelectorAll(".result");
+
 score0Element.textContent = 0;
 score1Element.textContent = 0;
 
@@ -66,11 +68,18 @@ btnHold.addEventListener("click", function (e) {
             ? (score0Element.textContent = scores[playerActive])
             : (score1Element.textContent = scores[playerActive]);
 
-        if (scores[playerActive] >= 100) {
+        if (scores[playerActive] >= 10) {
             continueGame = false;
             playerActive === 0
                 ? player0Element.classList.add("player--winner")
                 : player1Element.classList.add("player--winner");
+            for (let i = 0; i < results.length; i++) {
+                diceElement.classList.add("hidden");
+                results[i].classList.remove("hidden");
+                document.querySelector(".player-win").textContent = `PLAYER ${
+                    playerActive + 1
+                }`;
+            }
         } else {
             switchPlayer();
         }
