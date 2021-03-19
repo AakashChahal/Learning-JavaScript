@@ -16,16 +16,28 @@ const btnHold = document.querySelector(".btn--hold");
 
 const results = document.querySelectorAll(".result");
 
-score0Element.textContent = 0;
-score1Element.textContent = 0;
-
-const scores = [0, 0];
-let currScore = 0;
-let playerActive = 0;
-
-let continueGame = true;
+let scores, currScore, playerActive, continueGame;
 
 // Functions
+const initGame = function () {
+    scores = [0, 0];
+    currScore = 0;
+    playerActive = 0;
+    continueGame = true;
+    for (let i = 0; i < 2; i++) {
+        document.getElementById(`score--${i}`).textContent = 0;
+        document.getElementById(`current--${i}`).textContent = 0;
+        results[i].classList.add("hidden");
+        document
+            .querySelector(`.player--${i}`)
+            .classList.remove("player--winner");
+    }
+    player0Element.classList.add("player--active");
+    player1Element.classList.remove("player--active");
+    diceElement.classList.add("hidden");
+};
+initGame();
+
 const switchPlayer = function () {
     if (player0Element.classList.contains("player--active")) {
         playerActive = 1;
@@ -85,3 +97,5 @@ btnHold.addEventListener("click", function (e) {
         }
     }
 });
+
+btnNewGame.addEventListener("click", initGame);
