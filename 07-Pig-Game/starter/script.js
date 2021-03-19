@@ -17,36 +17,62 @@ const btnHold = document.querySelector(".btn--hold");
 score0Element.textContent = 0;
 score1Element.textContent = 0;
 
+const scores = [0, 0];
 let currScore = 0;
 let playerActive = 0;
 
+let continueGame = true;
+
+// Functions
+const switchPlayer = function () {
+    if (player0Element.classList.contains("player--active")) {
+        playerActive = 1;
+        currentScore0.textContent = 0;
+    } else {
+        playerActive = 0;
+        currentScore1.textContent = 0;
+    }
+    player0Element.classList.toggle("player--active");
+    player1Element.classList.toggle("player--active");
+    currScore = 0;
+};
+
 // Event Handlers
 btnRoll.addEventListener("click", function (e) {
-    // Generating a random dice number
-    const diceNumber = Math.trunc(Math.random() * 6 + 1);
+    if (continueGame) {
+        // Generating a random dice number
+        const diceNumber = Math.trunc(Math.random() * 6 + 1);
 
-    // Displaying the dice with the above generated random number
-    diceElement.src = `dice-${diceNumber}.png`;
-    diceElement.classList.remove("hidden");
+        // Displaying the dice with the above generated random number
+        diceElement.src = `dice-${diceNumber}.png`;
+        diceElement.classList.remove("hidden");
 
-    // Checking for diceNumber to keep score and switch player
-    if (diceNumber !== 1) {
-        currScore += diceNumber;
-        playerActive === 1
-            ? (currentScore1.textContent = currScore)
-            : (currentScore0.textContent = currScore);
-    } else {
-        if (player0Element.classList.contains("player--active")) {
-            player0Element.classList.remove("player--active");
-            player1Element.classList.add("player--active");
-            playerActive = 1;
-            currentScore0.textContent = 0;
+        // Checking for diceNumber to keep score and switch player
+        if (diceNumber !== 1) {
+            currScore += diceNumber;
+            playerActive === 1
+                ? (currentScore1.textContent = currScore)
+                : (currentScore0.textContent = currScore);
         } else {
-            player1Element.classList.remove("player--active");
-            player0Element.classList.add("player--active");
-            playerActive = 0;
-            currentScore1.textContent = 0;
+            switchPlayer();
         }
-        currScore = 0;
+    }
+});
+
+btnHold.addEventListener("click", function (e) {
+    if (continueGame) {
+        scores[playerActive] += currScore;
+        playerActive === 0
+            ? (score0Element.textContent = scores[playerActive])
+            : (score1Element.textContent = scores[playerActive]);
+
+        if (scores[playerActive] >= 100) {
+            continueGame = false;
+            playerActive === 0
+                ? player0Element.classList.add("player--winner")
+                : player1Element.classList.add("player--winner");
+        } else {
+            switchPlayer();
+        }
     }
 });
