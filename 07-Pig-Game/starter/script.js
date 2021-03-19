@@ -80,7 +80,7 @@ btnHold.addEventListener("click", function (e) {
             ? (score0Element.textContent = scores[playerActive])
             : (score1Element.textContent = scores[playerActive]);
 
-        if (scores[playerActive] >= 10) {
+        if (scores[playerActive] >= 100) {
             continueGame = false;
             playerActive === 0
                 ? player0Element.classList.add("player--winner")
