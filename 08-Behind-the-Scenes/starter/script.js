@@ -1,6 +1,7 @@
 "use strict";
 
-// scope and scope chain
+/* scope and scope chain */
+console.log("*** Scope And Scope Chain ***");
 function calcAge(birthYear) {
     const age = 2037 - birthYear;
 
@@ -29,4 +30,29 @@ function calcAge(birthYear) {
 const firstName = "Aakash";
 calcAge(1996);
 
-// Hoisting
+/* Hoisting */
+console.log("*** HOISTING ***");
+
+// variables
+// console.log(me);
+// console.log(job);
+// console.log(year);
+
+var me = "Jonas";
+let job = "teacher";
+let year = 2000;
+
+// functions
+console.log(addDecl(2, 3));
+// console.log(addExpr(2, 3));
+// console.log(addArrow(2, 3));
+
+function addDecl(a, b) {
+    return a + b;
+}
+
+var addExpr = function (a, b) {
+    return a + b;
+};
+
+var addArrow = (a, b) => a + b;
