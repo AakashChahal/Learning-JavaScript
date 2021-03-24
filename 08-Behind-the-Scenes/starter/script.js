@@ -124,3 +124,33 @@ addArgs(23, 23, 11, 123);
 //     return a + b;
 // };
 // addArgsArrow(23, 23);
+
+/* understanding primitive & objects */
+let lastName = "Williams";
+let oldLastName = lastName;
+lastName = "Davis";
+console.log(`last name: ${lastName}, old last name: ${oldLastName}`);
+
+const jessica = {
+    firstName: "Jessica",
+    lastName: "Williams",
+    age: 30,
+};
+
+const marriedJessica = jessica;
+marriedJessica.lastName = "Davis";
+console.log("Before Married: ", jessica);
+console.log("After Married: ", marriedJessica);
+
+// copying objects
+const jessica2 = {
+    firstName: "Jessica",
+    lastName: "Williams",
+    age: 30,
+};
+
+const jessica2Copy = Object.assign({}, jessica2); // merge two objects and return new object
+jessica2Copy.lastName = "Davis";
+
+console.log("Jessica 2: ", jessica2);
+console.log("Jessica 2 Copy: ", jessica2Copy);
