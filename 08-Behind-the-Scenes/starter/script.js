@@ -56,3 +56,35 @@ var addExpr = function (a, b) {
 };
 
 var addArrow = (a, b) => a + b;
+
+/* this Keyword */
+console.log(this);
+
+const calcAge2 = function (birthYear) {
+    console.log(2037 - birthYear);
+    console.log(this);
+};
+calcAge2(2000);
+
+const calcAge2Arrow = (birthYear) => {
+    console.log(2037 - birthYear);
+    console.log(this);
+};
+calcAge2Arrow(2001);
+
+const newObj = {
+    aVar: 1991,
+    objFunc: function () {
+        console.log(this);
+    },
+};
+newObj.objFunc();
+
+const newObj2 = {
+    bVar: 2000,
+};
+newObj2.objFunc = newObj.objFunc;
+newObj2.objFunc();
+
+const newFunc = newObj.objFunc;
+newFunc();
