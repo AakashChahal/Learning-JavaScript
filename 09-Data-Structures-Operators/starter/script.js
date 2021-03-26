@@ -58,3 +58,45 @@ const {
     fri: { open, close },
 } = openingHours;
 console.log(open, close);
+
+/* SPREAD OPERATOR */
+const arr = [7, 8, 9];
+const badArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badArr);
+
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+console.log(...newArr);
+
+const newMenu = [...restaurant.mainMenu, "Burger", "Hummus"];
+console.log(newMenu);
+
+// copying array using spread operator
+const menuCopy = [...restaurant.mainMenu];
+console.log(menuCopy);
+const completeMenu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(completeMenu);
+
+const str = "Aakash";
+const letters = [...str, " ", "!"];
+console.log(letters);
+
+function whatAreMyArguments(a, b, c) {
+    console.log("a: ", a);
+    console.log("b: ", b);
+    console.log("c: ", c);
+}
+
+const inputArray = [123, 421, 3221];
+whatAreMyArguments(inputArray); //no the output we would want
+whatAreMyArguments(inputArray[0], inputArray[1], inputArray[2]); // not practical
+whatAreMyArguments(...inputArray); // not practical
+
+// spread operators for objects
+const newRestaurant = { FoundedIn: 1999, ...restaurant, founder: "Aakash" };
+console.log(newRestaurant);
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = "Another Named Restaurant";
+console.log(restaurant);
+console.log(restaurantCopy);
