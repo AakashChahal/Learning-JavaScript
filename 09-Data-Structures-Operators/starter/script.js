@@ -29,6 +29,10 @@ const restaurant = {
     order: function (starterIndex, mainIndex) {
         return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
     },
+    orderPizza: function (mainIngredient, ...otherIngredient) {
+        console.log(mainIngredient);
+        console.log(otherIngredient);
+    },
 };
 
 const { name, openingHours, categories } = restaurant;
@@ -100,3 +104,25 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = "Another Named Restaurant";
 console.log(restaurant);
 console.log(restaurantCopy);
+
+// REST (...)
+const [x, y, ...others] = [1, 2, 3, 4, 5, 5, 6, 7, 7, 7, 6]; // rest element should always be present at last
+console.log(x, y, others);
+
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+const add = function (...param) {
+    let sum = 0;
+    for (let i = 0; i < param.length; i++) sum += param[i];
+    console.log(sum);
+};
+
+add(2, 3);
+add(1, 3, 5, 7, 9);
+
+const nums = [123, 321, 1322];
+add(...nums);
+
+restaurant.orderPizza("Onion", "Cheese", "Cucumber", "Olives", "Paneer");
+restaurant.orderPizza("Onion");
