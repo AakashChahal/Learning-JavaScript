@@ -142,3 +142,7 @@ console.log("" && "Another String");
 console.log(true && 0);
 console.log(undefined && null);
 console.log(undefined && 0 && "" && "Hello" && 3 && 127 && null);
+
+// the nullish coalescing operator (??)
+console.log("0 || 10: ", 0 || 10);
+console.log("0 ?? 10: ", 0 ?? 10);
