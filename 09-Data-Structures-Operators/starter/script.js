@@ -126,3 +126,19 @@ add(...nums);
 
 restaurant.orderPizza("Onion", "Cheese", "Cucumber", "Olives", "Paneer");
 restaurant.orderPizza("Onion");
+
+// Short Circuiting
+console.log("----Short circuiting (OR)----");
+console.log(3 || "Some String");
+console.log("" || "Another String");
+console.log(true || 0);
+console.log(undefined || null);
+console.log(undefined || 0 || "" || "Hello" || 3 || 127 || null);
+
+console.log("----Short circuiting (AND)----");
+console.log(0 && "a string");
+console.log(3 && "Some String");
+console.log("" && "Another String");
+console.log(true && 0);
+console.log(undefined && null);
+console.log(undefined && 0 && "" && "Hello" && 3 && 127 && null);
