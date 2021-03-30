@@ -6,7 +6,7 @@ const flights =
 
 // Data needed for first part of the section
 
-const openingHours = {
+const hours = {
     thu: {
         open: 12,
         close: 22,
@@ -29,26 +29,25 @@ const restaurant = {
     mainMenu: ["Pizza", "Pasta", "Risotto"],
 
     // Enhanced Object literals (ES6)
-    openingHours,
+    hours,
 
     order(starterIndex, mainIndex) {
         return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
     },
     orderPizza(mainIngredient, ...otherIngredient) {
-        console.log(mainIngredient);
-        console.log(otherIngredient);
+        return `Pizza order with main ingredient ${mainIngredient} and ${otherIngredient}`;
     },
 };
 
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
+// const { name, openingHours, categories } = restaurant;
+// console.log(name, openingHours, categories);
 
-const {
-    name: restaurantName,
-    openingHours: hours,
-    categories: tags,
-} = restaurant;
-console.log(restaurantName, hours, tags);
+// const {
+//     name: restaurantName,
+//     openingHours: hours,
+//     categories: tags,
+// } = restaurant;
+// console.log(restaurantName, hours, tags);
 
 // Default values
 const { menu = [], starterMenu: starters = [] } = restaurant;
@@ -63,10 +62,10 @@ const { c } = obj;
 console.log(a, b, c);
 
 // Nested objects
-const {
-    fri: { open, close },
-} = openingHours;
-console.log(open, close);
+// const {
+//     fri: { open, close },
+// } = openingHours;
+// console.log(open, close);
 
 /* SPREAD OPERATOR */
 const arr = [7, 8, 9];
@@ -114,7 +113,7 @@ console.log(restaurantCopy);
 const [x, y, ...others] = [1, 2, 3, 4, 5, 5, 6, 7, 7, 7, 6]; // rest element should always be present at last
 console.log(x, y, others);
 
-const { sat, ...weekdays } = restaurant.openingHours;
+const { sat, ...weekdays } = restaurant.hours;
 console.log(weekdays);
 
 const add = function (...param) {
@@ -160,3 +159,29 @@ console.log("Looping over array using array.entries()");
 for (const [i, el] of newMenu.entries()) {
     console.log(`${i + 1}: ${el}`);
 }
+
+// optional chaining
+console.log(restaurant.hours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+// example for optional chaining
+const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+for (const day of days) {
+    const open = restaurant.hours[day]?.open ?? "not open";
+    console.log(open);
+}
+// checking if method exists using optional chaining
+console.log(
+    restaurant.orderPizza?.("Onion", "No onion", "not even a piece of onion") ??
+        "no such method"
+);
+
+console.log(restaurant.orderPasta?.("Onion") ?? "no such method");
+// optional chaining on arrays
+const users = [
+    {
+        fName: "Aakash",
+        email: "email@noemail.com",
+    },
+];
+
+console.log(users[0]?.fName ?? "User empty");
