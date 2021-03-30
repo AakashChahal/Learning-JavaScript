@@ -146,3 +146,12 @@ console.log(undefined && 0 && "" && "Hello" && 3 && 127 && null);
 // the nullish coalescing operator (??)
 console.log("0 || 10: ", 0 || 10);
 console.log("0 ?? 10: ", 0 ?? 10);
+
+// The for...of loop for looping over array
+for (const item of newMenu) {
+    console.log(item);
+}
+console.log("Looping over array using array.entries()");
+for (const [i, el] of newMenu.entries()) {
+    console.log(`${i + 1}: ${el}`);
+}
