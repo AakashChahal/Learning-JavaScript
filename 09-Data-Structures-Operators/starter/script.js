@@ -185,3 +185,20 @@ const users = [
 ];
 
 console.log(users[0]?.fName ?? "User empty");
+
+// looping objects
+// Looping over object keys
+console.log(`Object.keys(hours): ${Object.keys(hours)}`);
+for (const day of Object.keys(hours)) {
+    console.log(day);
+}
+// looping over object values
+console.log(`Object.values(hours): ${Object.values(hours)}`);
+for (const value of Object.values(hours)) {
+    console.log(value);
+}
+// looping over both keys and values
+console.log(`Object.Entries(hours): ${Object.entries(hours)}`);
+for (const [key, { open: value1, close: value2 }] of Object.entries(hours)) {
+    console.log(`Key: ${key} and Values: ${value1}, ${value2}`);
+}
