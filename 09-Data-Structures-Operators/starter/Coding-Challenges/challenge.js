@@ -1,4 +1,4 @@
-// Coding Challenge #1
+/* Coding Challenge #1 */
 const game = {
     team1: "Bayern Munich",
     team2: "Borrussia Dortmund",
@@ -67,7 +67,8 @@ console.log((team1 > team2 && "Team 1 will win") || "Team 2 will win");
 console.log(
     "------------------------------------------------------------------"
 );
-// Coding Challenge #2
+
+/* Coding Challenge #2 */
 // task #1
 for (const [i, player] of game.scored.entries()) {
     console.log(`Goal ${i + 1}: ${player}`);
@@ -94,3 +95,37 @@ for (const player of game.scored) {
     scorers[player] ? (scorers[player] += 1) : (scorers[player] = 1);
 }
 console.log(scorers);
+
+/* Challenge #3 */
+const gameEvents = new Map([
+    [17, "⚽ GOAL"],
+    [36, "� Substitution"],
+    [47, "⚽ GOAL"],
+    [61, "� Substitution"],
+    [64, "� Yellow card"],
+    [69, "� Red card"],
+    [70, "� Substitution"],
+    [72, "� Substitution"],
+    [76, "⚽ GOAL"],
+    [80, "⚽ GOAL"],
+    [92, "� Yellow card"],
+]);
+// task #1
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+
+// task #2
+gameEvents.delete(64);
+console.log(gameEvents);
+
+// task #3
+console.log(
+    `An event happened, on average, every ${90 / gameEvents.size} minutes`
+);
+
+// task #4
+for (const [key, value] of gameEvents) {
+    console.log(
+        `[${key <= 45 ? "FIRST HALF" : "SECOND HALF"}] ${key}: ${value}`
+    );
+}
