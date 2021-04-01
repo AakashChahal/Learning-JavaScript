@@ -288,3 +288,19 @@ console.log(question.get(userAns === question.get("correct")));
 console.log([...question.entries()]);
 console.log([...question.keys()]);
 console.log([...question.values()]);
+
+// Working with strings
+const airline = "Air One Airplane";
+const plane = "A3320";
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+
+console.log(airline.length);
+console.log(airline.indexOf("r")); // gives the index of the first occurence of character in the string
+console.log(airline.lastIndexOf("r")); // gives the index of the last occurence of character in the string
+console.log(airline.indexOf("india")); // gives the index of the word in the string or returns -1 if word not in the string
+// string slicing
+console.log(airline.slice(4)); // start index to slice (-ve value will start from end -1 for last)
+console.log(airline.slice(4, 7)); // start and slice index to slice (-ve value will start from end -1 for last)
