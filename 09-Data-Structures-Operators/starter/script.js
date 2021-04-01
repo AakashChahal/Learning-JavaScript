@@ -202,3 +202,32 @@ console.log(`Object.Entries(hours): ${Object.entries(hours)}`);
 for (const [key, { open: value1, close: value2 }] of Object.entries(hours)) {
     console.log(`Key: ${key} and Values: ${value1}, ${value2}`);
 }
+
+// Sets
+const ordersSet = new Set([
+    "Pizza",
+    "Burger",
+    "Pizza",
+    "Pasta",
+    "Pizza",
+    "Cake",
+]);
+console.log(ordersSet);
+console.log(new Set("Example"));
+console.log(new Set());
+// set methods
+console.log(ordersSet.size);
+console.log(ordersSet.has("Pizza"));
+console.log(ordersSet.add("BurgerPizza"));
+console.log(ordersSet.delete("BurgerPizza"));
+console.log(ordersSet);
+// accessing set elements
+for (const order of ordersSet) {
+    console.log(order);
+}
+ordersSet.clear(); // set method to delete all the elements of a set
+console.log(ordersSet);
+// Example
+const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"];
+const staffUnique = [...new Set(staff)]; // converting a set to array using spread operator
+console.log(staffUnique);
