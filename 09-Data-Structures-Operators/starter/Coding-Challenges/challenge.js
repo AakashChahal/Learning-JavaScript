@@ -129,3 +129,24 @@ for (const [key, value] of gameEvents) {
         `[${key <= 45 ? "FIRST HALF" : "SECOND HALF"}] ${key}: ${value}`
     );
 }
+
+/* Challenge #4 */
+document.body.append(document.createElement("textarea"));
+document.body.append(document.createElement("button"));
+
+const convertCamelCase = function (strArr) {
+    for (const [i, str] of strArr.entries()) {
+        const currStr = str.trim().split("_");
+        console.log(
+            currStr[0] +
+                currStr[1][0].toUpperCase() +
+                currStr[1].slice(1).toLowerCase()
+        );
+    }
+};
+
+document.querySelector("button").addEventListener("click", () => {
+    const text = document.querySelector("textarea").value;
+    const textArr = text.split("\n");
+    convertCamelCase(textArr);
+});
