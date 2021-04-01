@@ -339,3 +339,25 @@ console.log(newPlane.endsWith("Beo"));
 console.log(newPlane.endsWith("o"));
 console.log(newPlane.endsWith("eo"));
 console.log(newPlane.endsWith("seo"));
+
+// forming array from string
+console.log("My Name is Aakash Chahal".split(" "));
+
+// forming a string using an array
+const newArray = ["I", "am", "learning", "JavaScript"];
+let myString = newArray.join(" ");
+console.log(myString);
+myString = newArray.join(",");
+console.log(myString);
+myString = newArray.join("+");
+console.log(myString);
+
+// Padding
+const msg = "This is a message!";
+console.log(msg.padStart(25, "+")); // adds "+" to the start of string and makes the length of string to 25 (if length already 25 nothing happens)
+console.log(msg.padEnd(25, "+")); // adds "+" to the start of string and makes the length of string to 25 (if length already 25 nothing happens)
+console.log(msg.padStart(25, "+").padEnd(35, "+")); // adds "+" to the start of string and makes the length of string to 25 (if length already 25 nothing happens)
+
+// Repeat
+const msg2 = "Bad Weather!!... ";
+console.log(msg2.repeat(5));
