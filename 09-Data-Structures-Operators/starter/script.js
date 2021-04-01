@@ -256,3 +256,35 @@ console.log(rest.size);
 // rest.clear();
 rest.set(document.querySelector("h1"), "Heading");
 console.log(rest);
+
+const question = new Map([
+    ["Question", "What is the best programming language in the world?"],
+    [1, "C"],
+    [2, "Python"],
+    [3, "C++"],
+    [4, "JavaScript"],
+    ["correct", 2],
+    [true, "Correct answer"],
+    [false, "Wrong, try again"],
+]);
+console.log(question);
+// converting object to map
+const hoursMap = new Map(Object.entries(hours));
+// converting map to array
+console.log([...question]);
+console.log(hoursMap);
+// iterating over map
+console.log(question.get("Question"));
+for (const [key, value] of question) {
+    if (typeof key === "number") {
+        console.log(`Option ${key}: ${value}`);
+    }
+}
+// const userAns = Number(window.prompt(question.get("Question")));
+const userAns = 2;
+console.log(question.get(userAns === question.get("correct")));
+
+// map keys and values
+console.log([...question.entries()]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
