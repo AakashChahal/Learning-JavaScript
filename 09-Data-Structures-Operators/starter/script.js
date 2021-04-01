@@ -304,3 +304,38 @@ console.log(airline.indexOf("india")); // gives the index of the word in the str
 // string slicing
 console.log(airline.slice(4)); // start index to slice (-ve value will start from end -1 for last)
 console.log(airline.slice(4, 7)); // start and slice index to slice (-ve value will start from end -1 for last)
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+// fixing capitalization in name
+const passenger = "aakAsH";
+const passengerCorrect =
+    passenger[0].toUpperCase() + passenger.slice(1).toLowerCase();
+console.log(passengerCorrect);
+
+// comparing emails
+const email = "email@gmail.com";
+const loginEmail = "EMAIL@gmail.Com \n";
+
+const correctedLoginEmail = loginEmail.toLowerCase().trim();
+console.log(email === correctedLoginEmail);
+
+// replacing parts of string
+const priceGB = "977,28£";
+const priceUS = priceGB.replace("£", "$").replace(",", ".");
+console.log(priceUS);
+
+const announcement = "All the passengers come the door 3, boarding door no 3";
+console.log(announcement.replaceAll("door", "gate"));
+
+// booleans
+const newPlane = "A320Beo";
+console.log(newPlane.includes("A32"));
+console.log(newPlane.startsWith("A"));
+console.log(newPlane.startsWith("A3"));
+console.log(newPlane.startsWith("A2"));
+console.log(newPlane.endsWith("Beo"));
+console.log(newPlane.endsWith("o"));
+console.log(newPlane.endsWith("eo"));
+console.log(newPlane.endsWith("seo"));
