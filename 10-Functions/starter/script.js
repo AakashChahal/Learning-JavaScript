@@ -22,3 +22,24 @@ createBooking("LH123", 2);
 createBooking("LH123", 5);
 
 createBooking("LH123", undefined, 300); // way to skip a parameter
+
+const flight = "LH321";
+const jonas = {
+    name: "Jonas Something",
+    passport: 247837238210,
+};
+
+const checkIn = function (flightNum, passenger) {
+    flightNum = "LH999";
+    passenger.name = "Mr." + passenger.name;
+
+    if (passenger.passport === 247837238210) {
+        alert("Check In");
+    } else {
+        alert("Wrong Passport");
+    }
+};
+
+checkIn(flight, jonas);
+console.log(flight);
+console.log(jonas);
