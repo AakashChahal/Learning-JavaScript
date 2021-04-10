@@ -43,3 +43,22 @@ const checkIn = function (flightNum, passenger) {
 checkIn(flight, jonas);
 console.log(flight);
 console.log(jonas);
+
+const oneWord = function (str) {
+    return str.replace(/ /g, "").toLowerCase();
+};
+
+const upperFirstWord = function (str) {
+    const [first, ...others] = str.split(" ");
+    return [first.toUpperCase(), ...others].join(" ");
+};
+
+// Example of an Higer-Order function
+const transformer = function (str, fn) {
+    console.log(`Original String: ${str}`);
+    console.log(`Transformed String: ${fn(str)}`);
+    console.log(`Transformed by the function: ${fn.name}`);
+};
+
+transformer("JavaScript is the best!", upperFirstWord);
+transformer("JavaScript is the best!", oneWord);
