@@ -152,3 +152,9 @@ const addTaxes = (rate) => (value) => value + value * rate;
 const addVAT2 = addTaxes(0.23);
 console.log(addVAT2(100));
 console.log(addVAT2(29));
+
+// IIFE: Immediately Invoked Function Expression
+(function () {
+    console.log("This will only run once");
+})();
+(() => console.log("This will also only run once"))();
