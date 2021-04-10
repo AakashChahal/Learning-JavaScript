@@ -29,20 +29,20 @@ const jonas = {
     passport: 247837238210,
 };
 
-const checkIn = function (flightNum, passenger) {
-    flightNum = "LH999";
-    passenger.name = "Mr." + passenger.name;
+// const checkIn = function (flightNum, passenger) {
+//     flightNum = "LH999";
+//     passenger.name = "Mr." + passenger.name;
 
-    if (passenger.passport === 247837238210) {
-        alert("Check In");
-    } else {
-        alert("Wrong Passport");
-    }
-};
+//     if (passenger.passport === 247837238210) {
+//         alert("Check In");
+//     } else {
+//         alert("Wrong Passport");
+//     }
+// };
 
-checkIn(flight, jonas);
-console.log(flight);
-console.log(jonas);
+// checkIn(flight, jonas);
+// console.log(flight);
+// console.log(jonas);
 
 const oneWord = function (str) {
     return str.replace(/ /g, "").toLowerCase();
@@ -84,3 +84,36 @@ const greet = (greeting) => (name) => {
 const greeter = greet("Hey");
 greeter("Aakash");
 greeter("Jonas");
+
+// The call and apply methods
+const lufthansa = {
+    airline: "Lufthansa",
+    iataCode: "LH",
+    bookings: [],
+    book(flightNum, name) {
+        console.log(
+            `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+        );
+        this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+    },
+};
+
+lufthansa.book(239, "Person One");
+lufthansa.book(932, "Person Two");
+console.log(lufthansa.bookings);
+
+const eurowings = {
+    airline: "Eurowings",
+    iataCode: "EW",
+    bookings: [],
+};
+
+const book = lufthansa.book;
+
+// The call method
+book.call(eurowings, 239, "Person Three");
+// console.log(eurowings);
+book.call(lufthansa, 901, "Person Four");
+
+// The apply method
+book.apply(eurowings, [323, "Person Five"]);
