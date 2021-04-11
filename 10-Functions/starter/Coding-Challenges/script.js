@@ -1,12 +1,6 @@
 "use strict";
 
 /* CHALLENGE #1 */
-// 5. Bonus: Use the 'displayResults' method to display the 2 arrays in the test
-// data. Use both the 'array' and the 'string' option. Do not put the arrays in the poll
-// object! So what should the this keyword look like in this situation?
-// § Data 1: [5, 2, 3]
-// § Data 2: [1, 5, 3, 9, 6, 1]
-
 const poll = {
     question: "What is your favourite programming language?",
     options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
@@ -45,3 +39,12 @@ poll.displayResults.call({ answers: [5, 2, 3] });
 poll.displayResults.call({ answers: [5, 2, 3] }, "string");
 poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
 poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, "string");
+
+/* CHALLENGE #2 */
+(function () {
+    const header = document.querySelector("h1");
+    header.style.color = "red";
+    document.querySelector("body").addEventListener("click", () => {
+        header.style.color = "blue";
+    });
+})();
