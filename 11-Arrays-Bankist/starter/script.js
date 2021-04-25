@@ -71,10 +71,10 @@ const currencies = new Map([
     ["GBP", "Pound sterling"],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
 /////////////////////////////////////////////////
-/* Simple Array Methods */
+
+/* Simple Array Methods
+
 // SLICE
 let arr = ["a", "b", "c", "d", "e"];
 console.log(arr.slice(2));
@@ -102,3 +102,23 @@ console.log(letters);
 
 // JOIN
 console.log(letters.join(" - "));
+*/
+
+/* Looping over Arrays */
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+movements.forEach(function (movement) {
+    if (movement > 0) {
+        console.log(`Deposited $${movement}`);
+    } else {
+        console.log(`Withdrawn $${Math.abs(movement)}`);
+    }
+});
+
+movements.forEach(function (mov, i, arr) {
+    if (mov > 0) {
+        console.log(`Movement ${i + 1}: Deposited $${mov}`);
+    } else {
+        console.log(`Movement ${i + 1}: Withdrawn $${Math.abs(mov)}`);
+    }
+});
