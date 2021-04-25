@@ -64,13 +64,6 @@ const inputClosePin = document.querySelector(".form__input--pin");
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
-
-const currencies = new Map([
-    ["USD", "United States dollar"],
-    ["EUR", "Euro"],
-    ["GBP", "Pound sterling"],
-]);
-
 /////////////////////////////////////////////////
 
 /* Simple Array Methods
@@ -104,8 +97,7 @@ console.log(letters);
 console.log(letters.join(" - "));
 */
 
-/* Looping over Arrays */
-
+/* Looping over Arrays
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 movements.forEach(function (movement) {
     if (movement > 0) {
@@ -122,3 +114,31 @@ movements.forEach(function (mov, i, arr) {
         console.log(`Movement ${i + 1}: Withdrawn $${Math.abs(mov)}`);
     }
 });
+*/
+
+/* forEach on Maps and Sets
+// MAP
+const currencies = new Map([
+    ["USD", "United States dollar"],
+    ["EUR", "Euro"],
+    ["GBP", "Pound sterling"],
+]);
+currencies.forEach((val, key, map) => {
+    console.log(`${key}: ${val}`);
+});
+
+// SET
+const currenciesUnique = new Set([
+    "USD",
+    "USD",
+    "INR",
+    "GBP",
+    "EUR",
+    "INR",
+    "INR",
+]);
+console.log(currenciesUnique);
+currenciesUnique.forEach((value, _, set) => {
+    console.log(`VAlUE: ${value}`);
+});
+*/
