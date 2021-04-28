@@ -79,6 +79,18 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const createUsername = function (accs) {
+    accs.forEach(function (acc) {
+        acc.username = acc.owner
+            .toLowerCase()
+            .split(" ")
+            .map((word) => word[0])
+            .join("");
+    });
+};
+
+createUsername(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -161,7 +173,7 @@ currenciesUnique.forEach((value, _, set) => {
 });
 */
 
-/* The MAP method */
+/* The MAP method 
 const eurToUsd = 1.1;
 const convertedMovements = movements.map((mov) => mov * eurToUsd);
 console.log(convertedMovements);
@@ -172,3 +184,4 @@ const movementsDescription = movements.map(
         )}`
 );
 console.log(movementsDescription);
+*/
