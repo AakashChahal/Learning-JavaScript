@@ -82,6 +82,7 @@ displayMovements(account1.movements);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 /////////////////////////////////////////////////
 
 /* Simple Array Methods
@@ -116,7 +117,6 @@ console.log(letters.join(" - "));
 */
 
 /* Looping over Arrays
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 movements.forEach(function (movement) {
     if (movement > 0) {
         console.log(`Deposited $${movement}`);
@@ -127,9 +127,9 @@ movements.forEach(function (movement) {
 
 movements.forEach(function (mov, i, arr) {
     if (mov > 0) {
-        console.log(`Movement ${i + 1}: Deposited $${mov}`);
+        console.log(`Movement ${i + 1}: Deposited ${mov}`);
     } else {
-        console.log(`Movement ${i + 1}: Withdrawn $${Math.abs(mov)}`);
+        console.log(`Movement ${i + 1}: Withdrawn ${Math.abs(mov)}`);
     }
 });
 */
@@ -160,3 +160,15 @@ currenciesUnique.forEach((value, _, set) => {
     console.log(`VAlUE: ${value}`);
 });
 */
+
+/* The MAP method */
+const eurToUsd = 1.1;
+const convertedMovements = movements.map((mov) => mov * eurToUsd);
+console.log(convertedMovements);
+const movementsDescription = movements.map(
+    (mov, i) =>
+        `Movement ${i + 1}: ${mov > 0 ? "Deposited" : "Withdrawn"} ${Math.abs(
+            mov
+        )}`
+);
+console.log(movementsDescription);
