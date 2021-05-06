@@ -201,7 +201,7 @@ const withdrawals = movements.filter((mov) => mov < 0);
 console.log(withdrawals);
 */
 
-/* Reduce method */
+/* Reduce method
 // const balance = movements.reduce((acc, curr, i, arr) => {
 //     console.log(`For Iteration #${i} of Array [${arr}]: acc: ${acc} `);
 //     return acc + curr;
@@ -216,3 +216,4 @@ const max = movements.reduce(
     movements[0]
 );
 console.log(max);
+*/
