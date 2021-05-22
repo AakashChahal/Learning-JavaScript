@@ -406,3 +406,25 @@ console.log(movements);
 movements.sort((a, b) => a - b);
 console.log(movements);
 */
+
+/* More ways to create and fill arrays
+// using Array()
+const x = new Array(7); // creates a new empty array of size 7
+console.log(x);
+
+// filling array using fill()
+x.fill(7, 1, 5); // fill(val, start, end) positions from start to end-1 of array is filled with val
+console.log(x);
+
+// creating and filling array using Array.from()
+const y = Array.from({ length: 7 }, () => 1); // array of size 7, filled with value 1
+console.log(y);
+const z = Array.from({ length: 7 }, (_, i) => i + 1); // _ is used to replace curr value which won't be used, and i is the index of curr element
+console.log(z);
+
+// converting a NodeList to array
+const newArr = Array.from(document.querySelectorAll(".summary__value"), (el) =>
+    Number(el.textContent.replace("€", "") + 100)
+);
+console.log(newArr);
+*/
