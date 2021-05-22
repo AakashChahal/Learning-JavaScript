@@ -174,6 +174,21 @@ btnTransfer.addEventListener("click", function (e) {
     }
 });
 
+btnLoan.addEventListener("click", function (e) {
+    e.preventDefault();
+    const loanAmt = Number(inputLoanAmount.value);
+    if (
+        loanAmt > 0 &&
+        currentAccount.movements.some((mov) => mov >= loanAmt * 0.1)
+    ) {
+        currentAccount.movements.push(loanAmt);
+        inputLoanAmount.value = "";
+
+        // updating UI
+        updateUI(currentAccount);
+    }
+});
+
 btnClose.addEventListener("click", function (e) {
     e.preventDefault();
 
@@ -326,3 +341,23 @@ console.log(totalDepositsUSD);
 const firstWithdrawal = movements.find((mov) => mov < 0);
 console.log(firstWithdrawal);
 */
+
+/* some and every method */
+// some: returns true if any single element of the array matches the condition
+const anyDeposits = movements.some((mov) => mov > 0);
+console.log("There is some deposit?: " + anyDeposits);
+
+// every: returns true only if all the elements of array matches the condition
+console.log(
+    "There is only deposit in this account?: " +
+        movements.every((mov) => mov >= 0)
+);
+console.log(
+    "There is only deposit in this account?: " +
+        account4.movements.every((mov) => mov >= 0)
+);
+
+// passing callback functions to some and every
+const deposit = (mov) => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
