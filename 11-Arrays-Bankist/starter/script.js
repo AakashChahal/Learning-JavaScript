@@ -342,7 +342,7 @@ const firstWithdrawal = movements.find((mov) => mov < 0);
 console.log(firstWithdrawal);
 */
 
-/* some and every method */
+/* some and every method 
 // some: returns true if any single element of the array matches the condition
 const anyDeposits = movements.some((mov) => mov > 0);
 console.log("There is some deposit?: " + anyDeposits);
@@ -361,3 +361,28 @@ console.log(
 const deposit = (mov) => mov > 0;
 console.log(movements.some(deposit));
 console.log(movements.every(deposit));
+*/
+
+/* flat and flatMap 
+// flat
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+const deepArr = [[[1, 2], 3], [[4, 5], 6], 7, 8];
+console.log("Without using the depth parameter");
+console.log(deepArr.flat());
+console.log("Using the depth parameter: ");
+console.log(deepArr.flat(2));
+
+// flat with map
+const overallBal = accounts
+    .map((acc) => acc.movements)
+    .flat()
+    .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBal);
+
+// flatMap
+const overallBal2 = accounts
+    .flatMap((acc) => acc.movements)
+    .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBal2);
+*/
