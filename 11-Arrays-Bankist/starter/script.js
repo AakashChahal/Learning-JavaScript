@@ -148,6 +148,8 @@ btnLogin.addEventListener("click", function (e) {
 
         // UPDATE UI
         updateUI(currentAccount);
+    } else {
+        alert("No such account exists...");
     }
 });
 
@@ -169,6 +171,25 @@ btnTransfer.addEventListener("click", function (e) {
         receiverAcc.movements.push(amt);
         inputTransferTo.value = inputTransferAmount.value = "";
         updateUI(currentAccount);
+    }
+});
+
+btnClose.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    if (
+        currentAccount.username === inputCloseUsername.value &&
+        currentAccount.pin === Number(inputClosePin.value)
+    ) {
+        const index = accounts.findIndex(
+            (acc) => acc.username === currentAccount.username
+        );
+
+        alert(`${currentAccount.owner} your account is deleted`);
+
+        accounts.splice(index, 1);
+        containerApp.style.display = "none";
+        labelWelcome.textContent = "Log in to get started";
     }
 });
 
