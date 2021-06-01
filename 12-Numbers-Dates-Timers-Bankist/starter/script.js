@@ -94,7 +94,7 @@ const displayMovements = function (movements, sort = false) {
         <div class="movements__type movements__type--${type}">${
             i + 1
         } ${type}</div>
-        <div class="movements__value">${mov}€</div>
+        <div class="movements__value">${mov.toFixed(2)}€</div>
       </div>
     `;
 
@@ -104,7 +104,7 @@ const displayMovements = function (movements, sort = false) {
 
 const calcDisplayBalance = function (acc) {
     acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-    labelBalance.textContent = `${acc.balance}€`;
+    labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
 };
 
 const calcDisplaySummary = function (acc) {
@@ -116,7 +116,7 @@ const calcDisplaySummary = function (acc) {
     const out = acc.movements
         .filter((mov) => mov < 0)
         .reduce((acc, mov) => acc + mov, 0);
-    labelSumOut.textContent = `${Math.abs(out)}€`;
+    labelSumOut.textContent = `${Math.abs(out).toFixed(2)}€`;
 
     const interest = acc.movements
         .filter((mov) => mov > 0)
@@ -126,7 +126,7 @@ const calcDisplaySummary = function (acc) {
             return int >= 1;
         })
         .reduce((acc, int) => acc + int, 0);
-    labelSumInterest.textContent = `${interest}€`;
+    labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 };
 
 const createUsernames = function (accs) {
@@ -284,3 +284,37 @@ console.log(Number.isInteger(20)); // true
 console.log(Number.isInteger("20")); // false
 console.log(Number.isInteger(+"20")); //true
 console.log(Number.isInteger(20 / 0)); //false
+
+// Different Math functions in JS
+console.log(Math.sqrt(144));
+
+console.log(Math.max(1, 2, 3, 4, 5, 22, 6, 7, 8));
+console.log(Math.max(1, 2, 3, 4, 5, "22", 6, 7, 8));
+console.log(Math.max(1, 2, 3, 4, 5, "22px", 6, 7, 8));
+
+console.log(Math.min(12, 23, 11, 4, 1, 13));
+
+console.log(Math.PI * Number.parseFloat("10px") ** 2);
+
+console.log(Math.trunc(Math.random() * 6) + 1);
+
+// function to print a random number between two numbers
+const randomInt = (min, max) =>
+    Math.floor(Math.random() * (max - min) + 1) + min;
+console.log(randomInt(5, 10));
+
+// Rounding Integers
+console.log(Math.round(23.3)); // 23
+console.log(Math.round(23.9)); // 24
+
+console.log(Math.floor(23.3)); // 23
+console.log(Math.floor(23.9)); // 23
+
+console.log(Math.ceil(23.3)); // 24
+console.log(Math.ceil(23.9)); // 24
+
+// Rounding Decimals
+console.log((2.734).toFixed(0));
+console.log((2.734654).toFixed(3));
+console.log((2.734654).toFixed(2));
+console.log(+(2.734654).toFixed(2));
