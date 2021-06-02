@@ -318,3 +318,27 @@ console.log((2.734).toFixed(0));
 console.log((2.734654).toFixed(3));
 console.log((2.734654).toFixed(2));
 console.log(+(2.734654).toFixed(2));
+
+// Remainder Operator (%)
+console.log(123 % 2);
+console.log(124 % 2);
+
+/* example use case for % */
+labelBalance.addEventListener("click", function () {
+    [...document.querySelectorAll(".movements__row")].forEach(function (
+        row,
+        i
+    ) {
+        if (i % 2 === 0) {
+            row.style.backgroundColor = "salmon";
+            row.style.color = "green";
+        } else {
+            row.style.backgroundColor = "orangered";
+            row.style.color = "yellow";
+        }
+        if (i % 3 === 0) {
+            row.style.backgroundColor = "blue";
+            row.style.color = "hotpink";
+        }
+    });
+});
