@@ -342,3 +342,26 @@ labelBalance.addEventListener("click", function () {
         }
     });
 });
+
+// Working with BigInt
+console.log(2 ** 53 - 1); // the biggest integer javascript can correctly calculate or store or display
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(23456789098765432345678909876); // Number, won't be correctly displayed
+console.log(23456789098765432345678909876n); // BigInt, will be displayed correctly
+
+// operations on BigInt
+console.log(1000n + 1000n);
+console.log(987654323456789876567890098876776n + 1000n);
+// *** Any Math method will not work with BigInt ***/
+
+const huge = 8765678765678987456789876787n;
+const num = 111;
+// console.log(huge + num); // will not work because num is Number and huge is a BigInt
+console.log(huge + BigInt(num));
+
+console.log(20n > 15); // works fine
+console.log(20n === 20); // false as type is different
+console.log(typeof 20n);
+console.log(huge + "is a really big number");
+console.log(11n / 3n); // will remove the decimal part
+console.log(11 / 3);
