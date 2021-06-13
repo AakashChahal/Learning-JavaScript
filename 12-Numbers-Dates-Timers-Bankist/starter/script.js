@@ -81,21 +81,25 @@ const inputClosePin = document.querySelector(".form__input--pin");
 /////////////////////////////////////////////////
 // Functions
 
-const displayMovements = function (movements, sort = false) {
+const displayMovements = function (acc, sort = false) {
     containerMovements.innerHTML = "";
 
-    const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+    const movs = sort
+        ? acc.movements.slice().sort((a, b) => a - b)
+        : acc.movements;
 
     movs.forEach(function (mov, i) {
         const type = mov > 0 ? "deposit" : "withdrawal";
-
+        const date = new Date(acc.movementsDates[i]);
+        const movDate = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
         const html = `
-      <div class="movements__row">
+        <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
             i + 1
         } ${type}</div>
+        <div class="movements__date">${movDate}</div>
         <div class="movements__value">${mov.toFixed(2)}€</div>
-      </div>
+        </div>
     `;
 
         containerMovements.insertAdjacentHTML("afterbegin", html);
@@ -142,7 +146,7 @@ createUsernames(accounts);
 
 const updateUI = function (acc) {
     // Display movements
-    displayMovements(acc.movements);
+    displayMovements(acc);
 
     // Display balance
     calcDisplayBalance(acc);
@@ -154,6 +158,21 @@ const updateUI = function (acc) {
 ///////////////////////////////////////
 // Event handlers
 let currentAccount;
+
+// ALWAYS LOGGED IN (FOR EXAMPLES)
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
+
+const now = new Date();
+
+const date = `${now.getDate()}`.padStart(2, 0);
+const month = `${now.getMonth() + 1}`.padStart(2, 0);
+const year = now.getFullYear();
+
+const hr = now.getHours();
+const min = now.getMinutes();
+labelDate.textContent = `${date} /${month}/${year}, ${hr}:${min}`;
 
 btnLogin.addEventListener("click", function (e) {
     // Prevent form from submitting
@@ -198,6 +217,10 @@ btnTransfer.addEventListener("click", function (e) {
         currentAccount.movements.push(-amount);
         receiverAcc.movements.push(amount);
 
+        // Add transfer date to movements
+        currentAccount.movements.push(new Date().toISOString());
+        receiverAcc.movements.push(new Date().toISOString());
+
         // Update UI
         updateUI(currentAccount);
     }
@@ -214,6 +237,9 @@ btnLoan.addEventListener("click", function (e) {
     ) {
         // Add movement
         currentAccount.movements.push(amount);
+
+        // Add loan date to movements
+        currentAccount.movements.push(new Date().toISOString());
 
         // Update UI
         updateUI(currentAccount);
@@ -247,7 +273,7 @@ btnClose.addEventListener("click", function (e) {
 let sorted = false;
 btnSort.addEventListener("click", function (e) {
     e.preventDefault();
-    displayMovements(currentAccount.movements, !sorted);
+    displayMovements(currentAccount, !sorted);
     sorted = !sorted;
 });
 
@@ -367,8 +393,8 @@ console.log(11n / 3n); // will remove the decimal part
 console.log(11 / 3);
 
 /* creating dates */
-const now = new Date();
-console.log(now);
+const today = new Date();
+console.log(today);
 
 console.log(new Date("Jun 13 2021 17:54:29"));
 console.log(new Date("17 2000 sep 12:01"));
@@ -378,13 +404,13 @@ console.log(new Date(0)); // Jan 01 1970
 console.log(new Date(4 * 24 * 60 * 60 * 1000)); // 5 days after
 
 /* working with dates */
-console.log(now.getFullYear());
-console.log(now.getMonth());
-console.log(now.getDate());
-console.log(now.getDay());
-console.log(now.getHours());
-console.log(now.getMinutes());
-console.log(now.getSeconds());
-console.log(now.getTime()); // timestamp
+console.log(today.getFullYear());
+console.log(today.getMonth());
+console.log(today.getDate());
+console.log(today.getDay());
+console.log(today.getHours());
+console.log(today.getMinutes());
+console.log(today.getSeconds());
+console.log(today.getTime()); // timestamp
 
-console.log(now.setFullYear(2022)); // similarly all other methods can be set
+console.log(today.setFullYear(2022)); // similarly all other methods can be set
