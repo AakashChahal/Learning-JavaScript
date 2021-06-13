@@ -365,3 +365,26 @@ console.log(typeof 20n);
 console.log(huge + "is a really big number");
 console.log(11n / 3n); // will remove the decimal part
 console.log(11 / 3);
+
+/* creating dates */
+const now = new Date();
+console.log(now);
+
+console.log(new Date("Jun 13 2021 17:54:29"));
+console.log(new Date("17 2000 sep 12:01"));
+console.log(new Date(2000, 8, 17, 12, 15, 0));
+
+console.log(new Date(0)); // Jan 01 1970
+console.log(new Date(4 * 24 * 60 * 60 * 1000)); // 5 days after
+
+/* working with dates */
+console.log(now.getFullYear());
+console.log(now.getMonth());
+console.log(now.getDate());
+console.log(now.getDay());
+console.log(now.getHours());
+console.log(now.getMinutes());
+console.log(now.getSeconds());
+console.log(now.getTime()); // timestamp
+
+console.log(now.setFullYear(2022)); // similarly all other methods can be set
