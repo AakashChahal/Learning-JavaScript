@@ -466,3 +466,59 @@ console.log(today.setFullYear(2022)); // similarly all other methods can be set
 /* Operations with Dates */
 const future = new Date(2021, 6, 26);
 console.log(`Date: ${future} and the Timestamp: ${+future}`);
+
+/* Internationalizing Dates and Numbers using Intl API */
+// Date
+console.log(new Intl.DateTimeFormat("en-IN").format(new Date()));
+
+const options_date_time = {
+    hour: "numeric",
+    minute: "numeric",
+    day: "numeric",
+    month: "numeric", // can be set long or 2-digit too
+    year: "numeric",
+    weekday: "long",
+}; // look in documentation for more options.
+
+console.log(
+    "UK: " +
+        new Intl.DateTimeFormat("en-GB", options_date_time).format(new Date())
+);
+
+console.log(
+    "India: " +
+        new Intl.DateTimeFormat("en-IN", options_date_time).format(new Date())
+);
+
+console.log(
+    navigator.language +
+        ": " +
+        new Intl.DateTimeFormat(navigator.language, options_date_time).format(
+            new Date()
+        )
+);
+// Numbers
+const number = 93172819.319;
+console.log("UK: " + new Intl.NumberFormat("en-GB").format(number));
+console.log("India: " + new Intl.NumberFormat("en-IN").format(number));
+
+const options_numbers = {
+    style: "currency",
+    currency: "GBP",
+}; // look in documentation for more options.
+
+console.log(
+    "en-GB: " + new Intl.NumberFormat("en-GB", options_numbers).format(number)
+);
+
+console.log(
+    "en-IN: " + new Intl.NumberFormat("en-IN", options_numbers).format(number)
+);
+
+console.log(
+    navigator.language +
+        ": " +
+        new Intl.NumberFormat(navigator.language, options_numbers).format(
+            number
+        )
+);
