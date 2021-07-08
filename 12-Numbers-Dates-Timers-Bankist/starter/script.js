@@ -217,28 +217,37 @@ const updateUI = function (acc) {
     calcDisplaySummary(acc);
 };
 
-const startLogoutTimer = function () {
+const startLogoutTimer = () => {
     // setting initial time -> 5:00 minutes
     let time = 5 * 60;
-    // call timer every second
-    const logoutTimer = setInterval(() => {
+    function start() {
         // update UI with remaining time
         let min = String(Math.trunc(time / 60)).padStart(2, 0);
         let sec = String(time % 60).padStart(2, 0);
         labelTimer.textContent = `${min}:${sec}`;
+        if (time < 1) {
+            alert("You are logged out now!");
+            labelWelcome.textContent = "Login to get started";
+            containerApp.style.opacity = 0;
+            clearInterval(logoutTimer);
+        }
         time--;
-    }, 1000);
+    }
+    start();
+    // call timer every second
+    const logoutTimer = setInterval(start, 1000);
     // when timer hit 00:00 stop the timer and logout user.
+    return logoutTimer;
 };
 
 ///////////////////////////////////////
 // Event handlers
-let currentAccount;
+let currentAccount, timer;
 
 // ALWAYS LOGGED IN (FOR EXAMPLES)
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = 100;
 
 // Experimenting with the API
 const now = new Date();
@@ -286,7 +295,8 @@ btnLogin.addEventListener("click", function (e) {
         inputLoginPin.blur();
 
         // logoutTimer
-        startLogoutTimer();
+        timer ? clearInterval(timer) : null;
+        timer = startLogoutTimer();
 
         // Update UI
         updateUI(currentAccount);
@@ -317,6 +327,10 @@ btnTransfer.addEventListener("click", function (e) {
 
         // Update UI
         updateUI(currentAccount);
+
+        // restart timer
+        clearInterval(timer);
+        timer = startLogoutTimer();
     }
 });
 
@@ -341,6 +355,10 @@ btnLoan.addEventListener("click", function (e) {
         }, 5000);
     }
     inputLoanAmount.value = "";
+
+    // restart timer
+    clearInterval(timer);
+    timer = startLogoutTimer();
 });
 
 btnClose.addEventListener("click", function (e) {
