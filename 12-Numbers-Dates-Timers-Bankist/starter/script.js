@@ -217,6 +217,20 @@ const updateUI = function (acc) {
     calcDisplaySummary(acc);
 };
 
+const startLogoutTimer = function () {
+    // setting initial time -> 5:00 minutes
+    let time = 5 * 60;
+    // call timer every second
+    const logoutTimer = setInterval(() => {
+        // update UI with remaining time
+        let min = String(Math.trunc(time / 60)).padStart(2, 0);
+        let sec = String(time % 60).padStart(2, 0);
+        labelTimer.textContent = `${min}:${sec}`;
+        time--;
+    }, 1000);
+    // when timer hit 00:00 stop the timer and logout user.
+};
+
 ///////////////////////////////////////
 // Event handlers
 let currentAccount;
@@ -271,6 +285,9 @@ btnLogin.addEventListener("click", function (e) {
         inputLoginUsername.value = inputLoginPin.value = "";
         inputLoginPin.blur();
 
+        // logoutTimer
+        startLogoutTimer();
+
         // Update UI
         updateUI(currentAccount);
     }
@@ -312,14 +329,16 @@ btnLoan.addEventListener("click", function (e) {
         amount > 0 &&
         currentAccount.movements.some((mov) => mov >= amount * 0.1)
     ) {
-        // Add movement
-        currentAccount.movements.push(amount);
+        setTimeout(function () {
+            // Add movement
+            currentAccount.movements.push(amount);
 
-        // Add loan date to movements
-        currentAccount.movementsDates.push(new Date().toISOString());
+            // Add loan date to movements
+            currentAccount.movementsDates.push(new Date().toISOString());
 
-        // Update UI
-        updateUI(currentAccount);
+            // Update UI
+            updateUI(currentAccount);
+        }, 5000);
     }
     inputLoanAmount.value = "";
 });
@@ -551,3 +570,35 @@ console.log(
             number
         )
 );
+
+// Timers: setTimeout and setInterval
+const ingredients = ["Spinach", "Capsicum"];
+
+// setting a timer using setTimeout
+const pizzaTimer = setTimeout(
+    (...ings) => console.log(`Here' your pizza with ${ings.join(", ")}`),
+    3000,
+    ...ingredients
+);
+// deleting the timer
+if (ingredients.includes("Capsicum")) clearTimeout(pizzaTimer);
+
+// setting intervals using setInterval
+const firstInterval = setInterval(() => {
+    console.log(new Date());
+    clearInterval(firstInterval);
+}, 1000);
+
+// testing my fucking skills
+const timeOptions = {
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+};
+const secondInterval = setInterval(() => {
+    const time = new Intl.DateTimeFormat("en-IN", timeOptions).format(
+        new Date()
+    );
+    console.log(time);
+    clearInterval(secondInterval);
+}, 1000);
