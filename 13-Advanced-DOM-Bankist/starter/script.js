@@ -33,7 +33,7 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-// select, create and delete Elements
+/* select, create and delete Elements */
 
 // Selecting
 console.log(document.documentElement);
@@ -56,11 +56,11 @@ message.innerHTML =
   'We use cookies to improve functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
 
 // header.prepend(message);
-// header.append(message);
+header.append(message);
 // header.append(message.cloneNode(true));
 
 // header.before(message);
-header.after(message);
+// header.after(message);
 
 // Delete Element
 document
@@ -68,3 +68,36 @@ document
   .addEventListener('click', function (e) {
     message.remove();
   });
+
+/* styles, attributes and classes */
+
+// styles
+message.style.backgroundColor = '#37383d';
+message.style.width = '98.74vw';
+
+console.log(message.style.height); // we won't see anything as we didn't declare height using the style methid
+console.log(message.style.width);
+
+console.log(getComputedStyle(message)); // we can use getComputedStyle() to get all the CSS applied to a element on the web page.
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+
+// Attributes
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt); // this works because it is an image, and alt & src are supposed to be the attributes of image tag, but this won't work with other attributes
+console.log(logo.src);
+console.log(logo.className);
+
+console.log(logo.getAttribute('src')); // used to read attributes which are not traditionaly part of that tag
+
+logo.setAttribute('designer', 'Aakash');
+console.log(logo.getAttribute('designer'));
+
+// Data attributes
+console.log(logo.dataset.versionNumber);
+
+// Classes
+logo.classList.add('one', 'two');
+logo.classList.remove('one', 'two');
+logo.classList.toggle('one');
+logo.classList.contains('one');
