@@ -32,3 +32,39 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+// select, create and delete Elements
+
+// Selecting
+console.log(document.documentElement);
+console.log(document.head);
+console.log(document.body);
+
+const header = document.querySelector('.header');
+
+const allSections = document.querySelectorAll('.section');
+console.log(allSections);
+
+const allButtons = document.getElementsByTagName('button');
+console.log(allButtons);
+
+// Creating and inserting elements
+const message = document.createElement('div');
+message.classList.add('cookie-message');
+// message.textContent = 'We use cookies to improve functionality and analytics';
+message.innerHTML =
+  'We use cookies to improve functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
+
+// header.prepend(message);
+// header.append(message);
+// header.append(message.cloneNode(true));
+
+// header.before(message);
+header.after(message);
+
+// Delete Element
+document
+  .querySelector('.btn--close-cookie')
+  .addEventListener('click', function (e) {
+    message.remove();
+  });
