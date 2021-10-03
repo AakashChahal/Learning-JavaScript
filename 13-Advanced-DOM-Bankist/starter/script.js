@@ -101,3 +101,28 @@ logo.classList.add('one', 'two');
 logo.classList.remove('one', 'two');
 logo.classList.toggle('one');
 logo.classList.contains('one');
+
+/* implementation of smooth scrolling */
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+
+  // scrolling normal
+  // window.scrollTo(
+  //   s1coords.left + window.scrollX,
+  //   s1coords.top + window.scrollY
+  // );
+
+  // scrolling smooth
+  // window.scrollTo({
+  //   left: s1coords.left + window.scrollX,
+  //   top: s1coords.top + window.scrollY,
+  //   behavior: 'smooth',
+  // });
+
+  // modern way (only works in modern browser)
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
