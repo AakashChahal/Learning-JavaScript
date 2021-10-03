@@ -143,3 +143,27 @@ const alertH1 = function (e) {
 };
 
 h1.addEventListener('mouseenter', alertH1);
+
+/* Event propogation */
+const randInt = (min = 0, max = 1) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+const randColor = () =>
+  `rgb(${randInt(0, 255)}, ${randInt(0, 255)}, ${randInt(0, 255)})`;
+
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  this.style.backgroundColor = randColor();
+  console.log('LINK: ', e.target);
+
+  // stopping event propogation
+  // e.stopPropagation();
+});
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  this.style.backgroundColor = randColor();
+  console.log('CONTAINER: ', e.target);
+});
+
+document.querySelector('.nav').addEventListener('click', function (e) {
+  this.style.backgroundColor = randColor();
+  console.log('NAV: ', e.target);
+});
