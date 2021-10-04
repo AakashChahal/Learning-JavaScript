@@ -58,6 +58,7 @@ btnScrollTo.addEventListener('click', function (e) {
 });
 
 /* Page navigation */
+
 // document.querySelectorAll('.nav__link').forEach(function (el) {
 //   el.addEventListener('click', function (e) {
 //     e.preventDefault();
@@ -77,74 +78,95 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
+/* tabbed component */
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabContent = document.querySelectorAll('.operations__content');
+
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+
+  // Guard close
+  if (!clicked) return;
+
+  tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
+  clicked.classList.add('operations__tab--active');
+
+  // activate content area
+  tabContent.forEach(tc => tc.classList.remove('operations__content--active'));
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
+
 /* select, create and delete Elements */
 
 // Selecting
-console.log(document.documentElement);
-console.log(document.head);
-console.log(document.body);
+// console.log(document.documentElement);
+// console.log(document.head);
+// console.log(document.body);
 
-const header = document.querySelector('.header');
+// const header = document.querySelector('.header');
 
-const allSections = document.querySelectorAll('.section');
-console.log(allSections);
+// const allSections = document.querySelectorAll('.section');
+// console.log(allSections);
 
-const allButtons = document.getElementsByTagName('button');
-console.log(allButtons);
+// const allButtons = document.getElementsByTagName('button');
+// console.log(allButtons);
 
-// Creating and inserting elements
-const message = document.createElement('div');
-message.classList.add('cookie-message');
-// message.textContent = 'We use cookies to improve functionality and analytics';
-message.innerHTML =
-  'We use cookies to improve functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
+// // Creating and inserting elements
+// const message = document.createElement('div');
+// message.classList.add('cookie-message');
+// // message.textContent = 'We use cookies to improve functionality and analytics';
+// message.innerHTML =
+//   'We use cookies to improve functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
 
-// header.prepend(message);
-header.append(message);
-// header.append(message.cloneNode(true));
+// // header.prepend(message);
+// header.append(message);
+// // header.append(message.cloneNode(true));
 
-// header.before(message);
-// header.after(message);
+// // header.before(message);
+// // header.after(message);
 
-// Delete Element
-document
-  .querySelector('.btn--close-cookie')
-  .addEventListener('click', function (e) {
-    message.remove();
-  });
+// // Delete Element
+// document
+//   .querySelector('.btn--close-cookie')
+//   .addEventListener('click', function (e) {
+//     message.remove();
+//   });
 
-/* styles, attributes and classes */
+// /* styles, attributes and classes */
 
-// styles
-message.style.backgroundColor = '#37383d';
-message.style.width = '98.74vw';
+// // styles
+// message.style.backgroundColor = '#37383d';
+// message.style.width = '98.74vw';
 
-console.log(message.style.height); // we won't see anything as we didn't declare height using the style methid
-console.log(message.style.width);
+// console.log(message.style.height); // we won't see anything as we didn't declare height using the style methid
+// console.log(message.style.width);
 
-console.log(getComputedStyle(message)); // we can use getComputedStyle() to get all the CSS applied to a element on the web page.
-message.style.height =
-  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+// console.log(getComputedStyle(message)); // we can use getComputedStyle() to get all the CSS applied to a element on the web page.
+// message.style.height =
+//   Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
 
-// Attributes
-const logo = document.querySelector('.nav__logo');
-console.log(logo.alt); // this works because it is an image, and alt & src are supposed to be the attributes of image tag, but this won't work with other attributes
-console.log(logo.src);
-console.log(logo.className);
+// // Attributes
+// const logo = document.querySelector('.nav__logo');
+// console.log(logo.alt); // this works because it is an image, and alt & src are supposed to be the attributes of image tag, but this won't work with other attributes
+// console.log(logo.src);
+// console.log(logo.className);
 
-console.log(logo.getAttribute('src')); // used to read attributes which are not traditionaly part of that tag
+// console.log(logo.getAttribute('src')); // used to read attributes which are not traditionaly part of that tag
 
-logo.setAttribute('designer', 'Aakash');
-console.log(logo.getAttribute('designer'));
+// logo.setAttribute('designer', 'Aakash');
+// console.log(logo.getAttribute('designer'));
 
-// Data attributes
-console.log(logo.dataset.versionNumber);
+// // Data attributes
+// console.log(logo.dataset.versionNumber);
 
-// Classes
-logo.classList.add('one', 'two');
-logo.classList.remove('one', 'two');
-logo.classList.toggle('one');
-logo.classList.contains('one');
+// // Classes
+// logo.classList.add('one', 'two');
+// logo.classList.remove('one', 'two');
+// logo.classList.toggle('one');
+// logo.classList.contains('one');
 
 /* Types of events and event handlers */
 // const h1 = document.querySelector('h1');
