@@ -1,60 +1,66 @@
-'use strict';
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
-const modal = document.querySelector('.modal');
-const overlay = document.querySelector('.overlay');
-const btnCloseModal = document.querySelector('.btn--close-modal');
-const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+"use strict";
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+const modal = document.querySelector(".modal");
+const overlay = document.querySelector(".overlay");
+const btnCloseModal = document.querySelector(".btn--close-modal");
+const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
+
+const tabs = document.querySelectorAll(".operations__tab");
+const tabsContainer = document.querySelector(".operations__tab-container");
+const tabContent = document.querySelectorAll(".operations__content");
+
+const nav = document.querySelector(".nav");
 
 ///////////////////////////////////////
 // Modal window
 
 const openModal = function (e) {
-  e.preventDefault();
-  modal.classList.remove('hidden');
-  overlay.classList.remove('hidden');
+    e.preventDefault();
+    modal.classList.remove("hidden");
+    overlay.classList.remove("hidden");
 };
 
 const closeModal = function () {
-  modal.classList.add('hidden');
-  overlay.classList.add('hidden');
+    modal.classList.add("hidden");
+    overlay.classList.add("hidden");
 };
 
-btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
+btnsOpenModal.forEach((btn) => btn.addEventListener("click", openModal));
 
 for (let i = 0; i < btnsOpenModal.length; i++)
-  btnsOpenModal[i].addEventListener('click', openModal);
+    btnsOpenModal[i].addEventListener("click", openModal);
 
-btnCloseModal.addEventListener('click', closeModal);
-overlay.addEventListener('click', closeModal);
+btnCloseModal.addEventListener("click", closeModal);
+overlay.addEventListener("click", closeModal);
 
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-    closeModal();
-  }
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+        closeModal();
+    }
 });
 
 /* implementation of smooth scrolling */
 
-btnScrollTo.addEventListener('click', function (e) {
-  const s1coords = section1.getBoundingClientRect();
-  console.log(s1coords);
+btnScrollTo.addEventListener("click", function (e) {
+    const s1coords = section1.getBoundingClientRect();
+    console.log(s1coords);
 
-  // scrolling normal
-  // window.scrollTo(
-  //   s1coords.left + window.scrollX,
-  //   s1coords.top + window.scrollY
-  // );
+    // scrolling normal
+    // window.scrollTo(
+    //   s1coords.left + window.scrollX,
+    //   s1coords.top + window.scrollY
+    // );
 
-  // scrolling smooth
-  // window.scrollTo({
-  //   left: s1coords.left + window.scrollX,
-  //   top: s1coords.top + window.scrollY,
-  //   behavior: 'smooth',
-  // });
+    // scrolling smooth
+    // window.scrollTo({
+    //   left: s1coords.left + window.scrollX,
+    //   top: s1coords.top + window.scrollY,
+    //   behavior: 'smooth',
+    // });
 
-  // modern way (only works in modern browser)
-  section1.scrollIntoView({ behavior: 'smooth' });
+    // modern way (only works in modern browser)
+    section1.scrollIntoView({ behavior: "smooth" });
 });
 
 /* Page navigation */
@@ -70,34 +76,54 @@ btnScrollTo.addEventListener('click', function (e) {
 // event delegation: page navigation
 // 1. add event listener to the common parent element
 // 2. determine what element originated the event
-document.querySelector('.nav__links').addEventListener('click', function (e) {
-  e.preventDefault();
-  if (e.target.classList.contains('nav__link')) {
-    const id = e.target.getAttribute('href');
-    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-  }
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+    e.preventDefault();
+    if (e.target.classList.contains("nav__link")) {
+        const id = e.target.getAttribute("href");
+        document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+    }
 });
 
 /* tabbed component */
-const tabs = document.querySelectorAll('.operations__tab');
-const tabsContainer = document.querySelector('.operations__tab-container');
-const tabContent = document.querySelectorAll('.operations__content');
 
-tabsContainer.addEventListener('click', function (e) {
-  const clicked = e.target.closest('.operations__tab');
+tabsContainer.addEventListener("click", function (e) {
+    const clicked = e.target.closest(".operations__tab");
 
-  // Guard close
-  if (!clicked) return;
+    // Guard close
+    if (!clicked) return;
 
-  tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
-  clicked.classList.add('operations__tab--active');
+    tabs.forEach((tab) => tab.classList.remove("operations__tab--active"));
+    clicked.classList.add("operations__tab--active");
 
-  // activate content area
-  tabContent.forEach(tc => tc.classList.remove('operations__content--active'));
-  document
-    .querySelector(`.operations__content--${clicked.dataset.tab}`)
-    .classList.add('operations__content--active');
+    // activate content area
+    tabContent.forEach((tc) =>
+        tc.classList.remove("operations__content--active")
+    );
+    document
+        .querySelector(`.operations__content--${clicked.dataset.tab}`)
+        .classList.add("operations__content--active");
 });
+
+/* Menu fade animation */
+
+const handleHover = function (e, opacity) {
+    if (
+        e.target.classList.contains("nav__link") &&
+        !e.target.classList.contains("nav__link--btn")
+    ) {
+        const link = e.target;
+        const siblings = link.closest(".nav").querySelectorAll(".nav__link");
+
+        siblings.forEach((el) => {
+            if (el !== link && !el.classList.contains("nav__link--btn"))
+                el.style.opacity = this;
+        });
+    }
+};
+
+//// Passing an "argument" to handler
+nav.addEventListener("mouseover", handleHover.bind(0.5));
+nav.addEventListener("mouseout", handleHover.bind(1));
 
 /* select, create and delete Elements */
 
@@ -210,14 +236,14 @@ tabsContainer.addEventListener('click', function (e) {
 // });
 
 /* DOM traversing */
-const h1 = document.querySelector('h1');
+const h1 = document.querySelector("h1");
 
 // going down: child
-console.log(h1.querySelectorAll('.highlight'));
+console.log(h1.querySelectorAll(".highlight"));
 console.log(h1.childNodes);
 console.log(h1.children);
-h1.firstElementChild.style.color = '#ffffff';
-h1.lastElementChild.style.color = 'orangered';
+h1.firstElementChild.style.color = "#ffffff";
+h1.lastElementChild.style.color = "orangered";
 
 // going up: parents
 console.log(h1.parentNode);
