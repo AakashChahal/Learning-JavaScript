@@ -126,12 +126,45 @@ nav.addEventListener("mouseover", handleHover.bind(0.5));
 nav.addEventListener("mouseout", handleHover.bind(1));
 
 /* sticky navigation bar */
-const initialCoords = section1.getBoundingClientRect();
+// const initialCoords = section1.getBoundingClientRect();
 
-window.addEventListener("scroll", function () {
-    if (initialCoords.top <= window.scrollY) nav.classList.add("sticky");
-    else nav.classList.remove("sticky");
+// window.addEventListener("scroll", function () {
+//     if (initialCoords.top <= window.scrollY) nav.classList.add("sticky");
+//     else nav.classList.remove("sticky");
+// });
+
+//// using Intersection observer API ////
+
+// const obsCallback = function (entries, observer) {
+//     entries.forEach((entry) => {
+//         console.log(entry);
+//     });
+// };
+
+// const obsOptions = {
+//     root: null, // root is the element we want our target (section1) to intersect with (null -> viewport)
+//     threshold: [0, 0.1],
+// };
+
+// const observer = new IntersectionObserver(obsCallback, obsOptions);
+// observer.observe(section1);
+
+const header = document.querySelector(".header");
+const navHeight = nav.getBoundingClientRect().height;
+
+const stickyNav = (entries) => {
+    const [entry] = entries;
+    if (entry.isIntersecting) nav.classList.remove("sticky");
+    else nav.classList.add("sticky");
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+    root: null,
+    threshold: 0,
+    rootMargin: `-${navHeight + 10}px`,
 });
+
+headerObserver.observe(header);
 
 /* select, create and delete Elements */
 
