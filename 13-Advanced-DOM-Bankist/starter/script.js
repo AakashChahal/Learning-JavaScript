@@ -409,3 +409,19 @@ console.log(h1.previousSibling);
 console.log(h1.nextSibling);
 
 console.log(h1.parentElement.children);
+
+/* DOM lifecycle events */
+
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM Content loaded");
+});
+
+window.addEventListener("load", function () {
+    console.log("Page fully loaded");
+});
+
+// window.addEventListener("beforeunload", function (e) {
+//     e.preventDefault();
+//     console.log(e);
+//     e.returnValue = "";
+// });
