@@ -45,3 +45,15 @@ console.log(
     "species is a property of aakash: ",
     aakash.hasOwnProperty("species")
 );
+
+console.log(aakash.__proto__.__proto__);
+console.log(Object.prototype);
+
+/*
+    NOTE :
+    Person.prototype => prototype for all the Person objects (example:- aakash)
+    i.e, Person.prototype === aakash.__proto__
+*/
+
+const h1 = document.querySelector("h1");
+console.dir(h1);
