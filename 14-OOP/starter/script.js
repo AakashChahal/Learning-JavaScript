@@ -32,3 +32,16 @@ Person.prototype.calcAge = function () {
 };
 
 console.log(Person.prototype);
+
+console.log(aakash.__proto__);
+console.log(aakash.__proto__ === Person.prototype);
+
+Person.prototype.species = "Homo Sapien";
+console.log(
+    "firstName is a property of aakash: ",
+    aakash.hasOwnProperty("firstName")
+);
+console.log(
+    "species is a property of aakash: ",
+    aakash.hasOwnProperty("species")
+);
