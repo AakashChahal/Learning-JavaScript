@@ -183,3 +183,19 @@ console.log(mike.__proto__.__proto__.__proto__.__proto__); // null
 console.log(mike instanceof Student);
 console.log(mike instanceof Person);
 console.log(mike instanceof Object);
+
+// 2. ES6 Classes
+class StudentCl extends PersonCl {
+    constructor(fullName, birthYear, course) {
+        super(fullName, birthYear); // constructor of the parent class (ALWAYS NEEDS TO HAPPEN FIRST
+        this.course = course;
+    }
+
+    introduce() {
+        console.log(`My name is ${this.fullName} and I study ${this.course}`);
+    }
+}
+
+const martha = new StudentCl("Martha Jones", 2003, "CS");
+martha.introduce();
+martha.calcAge();
