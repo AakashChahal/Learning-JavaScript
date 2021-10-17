@@ -83,6 +83,7 @@ class CarCl {
         console.log(
             `${this.make}'s new speed after applying brake is ${this.speed} km/h`
         );
+        return this;
     }
 
     get speedUS() {
@@ -127,24 +128,24 @@ console.log("updated speed in mi/h: ", ford.speedUS);
 */
 
 console.log("------------------ CHALLENGE #3 ------------------");
-const EV = function (make, speed, currBattery) {
+const EV = function (make, speed, charge) {
     Car.call(this, make, speed);
-    this.currBattery = currBattery;
+    this.charge = charge;
 };
 
 EV.prototype = Object.create(Car.prototype);
 EV.prototype.constructor = EV;
 
 EV.prototype.chargeBattery = function (chargeTo) {
-    this.currBattery = chargeTo;
+    this.charge = chargeTo;
     console.log(`${this.make}'s battery charged to ${chargeTo}%`);
 };
 
 EV.prototype.accelerate = function () {
     this.speed += 20;
-    this.currBattery -= 1;
+    this.charge -= 1;
     console.log(
-        `${this.make} going at ${this.speed} km/h, with a charge of ${this.currBattery}%`
+        `${this.make} going at ${this.speed} km/h, with a charge of ${this.charge}%`
     );
 };
 
@@ -154,3 +155,59 @@ tesla.accelerate();
 tesla.brake();
 tesla.chargeBattery(90);
 tesla.accelerate();
+
+/* 
+    CHALLENGE #4
+    Tasks:
+    1. Re-create Challenge #3, but this time using ES6 classes: create an 'EVCl'
+    child class of the 'CarCl' class
+    2. Make the 'charge' property private
+    3. Implement the ability to chain the 'accelerate' and 'chargeBattery'
+    methods of this class, and also update the 'brake' method in the 'CarCl'
+    class. Then experiment with chaining!
+
+    Test data:
+    § Data car 1: 'Rivian' going at 120 km/h, with a charge of 23%
+*/
+
+console.log("------------------ CHALLENGE #4 ------------------");
+class EVCL extends CarCl {
+    #charge;
+
+    constructor(make, speed, charge) {
+        super(make, speed);
+        this.#charge = charge;
+    }
+
+    chargeBattery(chargeTo) {
+        this.#charge = chargeTo;
+        console.log(`${this.make}'s battery charged to ${chargeTo}%`);
+        return this;
+    }
+
+    accelerate() {
+        this.speed += 20;
+        this.#charge -= 1;
+        console.log(
+            `${this.make} going at ${this.speed} km/h, with a charge of ${
+                this.#charge
+            }%`
+        );
+        return this;
+    }
+}
+
+const newTesla = new EVCL("Tesla", 100, 100);
+console.log(newTesla);
+
+newTesla
+    .accelerate()
+    .accelerate()
+    .accelerate()
+    .brake()
+    .chargeBattery(100)
+    .accelerate()
+    .brake()
+    .accelerate();
+
+console.log(newTesla.speedUS);
