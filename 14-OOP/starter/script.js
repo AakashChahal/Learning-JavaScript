@@ -1,19 +1,19 @@
 "use strict";
 
 /* contructor function and new operator */
-// const Person = function (firstName, birthYear) {
-//     console.log("Before initializing instance properties and methods: ", this);
-//     // instance properties
-//     this.firstName = firstName;
-//     this.birthYear = birthYear;
+const Person = function (firstName, birthYear) {
+    console.log("Before initializing instance properties and methods: ", this);
+    // instance properties
+    this.firstName = firstName;
+    this.birthYear = birthYear;
 
-//     // instance methods
-//     // creating functions inside constructor function isn't recommended and should be avoided
-//     // this.calcAge = function () {
-//     //     console.log(2037 - this.birthYear);
-//     // };
-//     // console.log("After initializing instance propertiesand methods: ", this);
-// };
+    // instance methods
+    // creating functions inside constructor function isn't recommended and should be avoided
+    // this.calcAge = function () {
+    //     console.log(2037 - this.birthYear);
+    // };
+    // console.log("After initializing instance propertiesand methods: ", this);
+};
 
 // Static function function for the constructor function
 // Person.hey = function () {
@@ -32,9 +32,9 @@
 
 // /* Prototypes */
 // // we can add methods to constructor function using prototype, and it is a better way to add functions to any constructor function
-// Person.prototype.calcAge = function () {
-//     console.log(2021 - this.birthYear);
-// };
+Person.prototype.calcAge = function () {
+    console.log(2021 - this.birthYear);
+};
 
 // console.log(Person.prototype);
 
@@ -264,3 +264,31 @@ console.log("new speed: ", ford.speed);
 ford.accelerate();
 console.log("updated speed in km/h: ", ford.speed);
 console.log("updated speed in mi/h: ", ford.speedUS);
+
+/* Implementing Inheritance between "Classes" */
+// 1. Constructor functions
+const Student = function (firstName, birthYear, course) {
+    Person.call(this, firstName, birthYear);
+    this.course = course;
+};
+
+// linking prototypes
+Student.prototype = Object.create(Person.prototype);
+Student.prototype.constructor = Student;
+
+Student.prototype.introduce = function () {
+    console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const mike = new Student("Mike", 2001, "Computer Science");
+mike.introduce();
+mike.calcAge();
+
+console.log(mike.__proto__); // Student.prototype (non-inherited properties)
+console.log(mike.__proto__.__proto__); // Student.prototype (all the inherited properties from Person.prototype)
+console.log(mike.__proto__.__proto__.__proto__); // Object.prototype
+console.log(mike.__proto__.__proto__.__proto__.__proto__); // null
+
+console.log(mike instanceof Student);
+console.log(mike instanceof Person);
+console.log(mike instanceof Object);
