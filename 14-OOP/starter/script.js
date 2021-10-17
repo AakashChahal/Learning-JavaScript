@@ -54,8 +54,8 @@ console.log(
 console.log(jonas.__proto__.__proto__);
 console.log(Object.prototype);
 
-const h1 = document.querySelector("h1");
-console.dir(h1);
+// const h1 = document.querySelector("h1");
+// console.dir(h1);
 
 /*
     NOTE :
@@ -199,3 +199,15 @@ class StudentCl extends PersonCl {
 const martha = new StudentCl("Martha Jones", 2003, "CS");
 martha.introduce();
 martha.calcAge();
+
+// 3. Object.create
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function (firstName, birthYear, course) {
+    PersonProto.init.call(this, firstName, birthYear);
+    this.course = course;
+};
+
+const jay = Object.create(StudentProto);
+jay.init("Jay", 1990, "CS");
+console.log(jay);
+jay.calcAge();
