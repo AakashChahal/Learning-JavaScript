@@ -183,3 +183,26 @@ console.log(acc.latest);
 acc.latest = 200;
 console.log(acc.movements);
 console.log(acc.latest);
+
+/* Object.create */
+// re-creating the Person class from above
+const PersonProto = {
+    calcAge() {
+        console.log(2021 - this.birthYear);
+    },
+
+    init(firstName, birthYear) {
+        this.firstName = firstName;
+        this.birthYear = birthYear;
+    },
+};
+
+const adam = Object.create(PersonProto);
+const eve = Object.create(PersonProto);
+console.log(adam);
+console.log(adam.__proto__);
+
+adam.init("Adam", 1900);
+eve.init("Eve", 1900);
+console.log(adam, eve);
+console.log(adam.firstName, eve.firstName);
