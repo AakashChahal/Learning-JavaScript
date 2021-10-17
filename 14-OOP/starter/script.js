@@ -245,10 +245,12 @@ class Account {
 
     deposit(val) {
         this.#movements.push(val);
+        return this; // to make the method available for chaining
     }
 
     withdraw(val) {
         this.deposit(-val);
+        return this;
     }
 
     // protected method
@@ -261,6 +263,7 @@ class Account {
             this.deposit(value);
             console.log(`${this.owner}, Your Loan of $${value} is approved`);
         }
+        return this;
     }
 
     // private methods (isn't implemented yet and treated as private fields)
@@ -278,5 +281,9 @@ acc1.requestLoan(2000000);
 
 console.log(acc1);
 // console.log(acc1.#movements);
+// console.log(acc1.getMovements());
+// acc1.#approveLoan(10);
+
+// Chaining
+acc1.deposit(500).deposit(2000).withdraw(50).requestLoan(2000000);
 console.log(acc1.getMovements());
-acc1.#approveLoan(10);
