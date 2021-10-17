@@ -1,19 +1,19 @@
 "use strict";
 
 /* contructor function and new operator */
-const Person = function (firstName, birthYear) {
-    console.log("Before initializing instance properties and methods: ", this);
-    // instance properties
-    this.firstName = firstName;
-    this.birthYear = birthYear;
+// const Person = function (firstName, birthYear) {
+//     console.log("Before initializing instance properties and methods: ", this);
+//     // instance properties
+//     this.firstName = firstName;
+//     this.birthYear = birthYear;
 
-    // instance methods
-    // creating functions inside constructor function isn't recommended and should be avoided
-    // this.calcAge = function () {
-    //     console.log(2037 - this.birthYear);
-    // };
-    // console.log("After initializing instance propertiesand methods: ", this);
-};
+//     // instance methods
+//     // creating functions inside constructor function isn't recommended and should be avoided
+//     // this.calcAge = function () {
+//     //     console.log(2037 - this.birthYear);
+//     // };
+//     // console.log("After initializing instance propertiesand methods: ", this);
+// };
 
 // Static function function for the constructor function
 // Person.hey = function () {
@@ -32,9 +32,9 @@ const Person = function (firstName, birthYear) {
 
 // /* Prototypes */
 // // we can add methods to constructor function using prototype, and it is a better way to add functions to any constructor function
-Person.prototype.calcAge = function () {
-    console.log(2021 - this.birthYear);
-};
+// Person.prototype.calcAge = function () {
+//     console.log(2021 - this.birthYear);
+// };
 
 // console.log(Person.prototype);
 
@@ -267,28 +267,76 @@ console.log("updated speed in mi/h: ", ford.speedUS);
 
 /* Implementing Inheritance between "Classes" */
 // 1. Constructor functions
-const Student = function (firstName, birthYear, course) {
-    Person.call(this, firstName, birthYear);
-    this.course = course;
+// const Student = function (firstName, birthYear, course) {
+//     Person.call(this, firstName, birthYear);
+//     this.course = course;
+// };
+
+// // linking prototypes
+// Student.prototype = Object.create(Person.prototype);
+// Student.prototype.constructor = Student;
+
+// Student.prototype.introduce = function () {
+//     console.log(`My name is ${this.firstName} and I study ${this.course}`);
+// };
+
+// const mike = new Student("Mike", 2001, "Computer Science");
+// mike.introduce();
+// mike.calcAge();
+
+// console.log(mike.__proto__); // Student.prototype (non-inherited properties)
+// console.log(mike.__proto__.__proto__); // Student.prototype (all the inherited properties from Person.prototype)
+// console.log(mike.__proto__.__proto__.__proto__); // Object.prototype
+// console.log(mike.__proto__.__proto__.__proto__.__proto__); // null
+
+// console.log(mike instanceof Student);
+// console.log(mike instanceof Person);
+// console.log(mike instanceof Object);
+
+/* 
+    CHALLENGE #3
+    Tasks:
+    1. Use a constructor function to implement an Electric Car (called 'EV') as a child
+    "class" of 'Car'. Besides a make and current speed, the 'EV' also has the 
+    current battery charge in % ('charge' property)
+    2. Implement a 'chargeBattery' method which takes an argument 
+    'chargeTo' and sets the battery charge to 'chargeTo'
+    3. Implement an 'accelerate' method that will increase the car's speed by 20, 
+    and decrease the charge by 1%. Then log a message like this: 'Tesla going at 140 
+    km/h, with a charge of 22%'
+    4. Create an electric car object and experiment with calling 'accelerate', 
+    'brake' and 'chargeBattery' (charge to 90%). Notice what happens when 
+    you 'accelerate'! Hint: Review the definiton of polymorphism �
+    
+    Test data:
+    § Data car 1: 'Tesla' going at 120 km/h, with a charge of 23%
+*/
+
+console.log("------------------ CHALLENGE #3 ------------------");
+const EV = function (make, speed, currBattery) {
+    Car.call(this, make, speed);
+    this.currBattery = currBattery;
 };
 
-// linking prototypes
-Student.prototype = Object.create(Person.prototype);
-Student.prototype.constructor = Student;
+EV.prototype = Object.create(Car.prototype);
+EV.prototype.constructor = EV;
 
-Student.prototype.introduce = function () {
-    console.log(`My name is ${this.firstName} and I study ${this.course}`);
+EV.prototype.chargeBattery = function (chargeTo) {
+    this.currBattery = chargeTo;
+    console.log(`${this.make}'s battery charged to ${chargeTo}%`);
 };
 
-const mike = new Student("Mike", 2001, "Computer Science");
-mike.introduce();
-mike.calcAge();
+EV.prototype.accelerate = function () {
+    this.speed += 20;
+    this.currBattery -= 1;
+    console.log(
+        `${this.make} going at ${this.speed} km/h, with a charge of ${this.currBattery}%`
+    );
+};
 
-console.log(mike.__proto__); // Student.prototype (non-inherited properties)
-console.log(mike.__proto__.__proto__); // Student.prototype (all the inherited properties from Person.prototype)
-console.log(mike.__proto__.__proto__.__proto__); // Object.prototype
-console.log(mike.__proto__.__proto__.__proto__.__proto__); // null
+const tesla = new EV("Tesla", 120, 23);
 
-console.log(mike instanceof Student);
-console.log(mike instanceof Person);
-console.log(mike instanceof Object);
+tesla.accelerate();
+tesla.brake();
+tesla.chargeBattery(90);
+tesla.accelerate();
