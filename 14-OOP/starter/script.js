@@ -211,3 +211,47 @@ const jay = Object.create(StudentProto);
 jay.init("Jay", 1990, "CS");
 console.log(jay);
 jay.calcAge();
+
+// Class Example
+class Account {
+    constructor(owner, currency, pin) {
+        this.owner = owner;
+        this.currency = currency;
+
+        // protected properties
+        this._pin = pin;
+        this._movements = [];
+        this.locale = navigator.language;
+
+        console.log(`Thanks for opening an account ${this.owner}`);
+    }
+
+    deposit(val) {
+        this._movements.push(val);
+    }
+
+    withdraw(val) {
+        this.deposit(-val);
+    }
+
+    // protected method
+    _approveLoan(value) {
+        if (value) return true;
+    }
+
+    requestLoan(value) {
+        if (this._approveLoan(value)) {
+            this.deposit(value);
+            console.log(`${this.owner}, Your Loan of $${value} is approved`);
+        }
+    }
+}
+
+const acc1 = new Account("Aakash", "GBP", 1111);
+console.log(acc1);
+
+acc1.deposit(1000);
+acc1.withdraw(10);
+acc1.requestLoan(2000000);
+
+console.log(acc1);
