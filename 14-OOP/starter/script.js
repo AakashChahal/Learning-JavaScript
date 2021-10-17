@@ -111,8 +111,8 @@ car1.accelerate();
 
 /* ES6 Classes */
 class Person {
-    constructor(firstName, birthYear) {
-        this.firstName = firstName;
+    constructor(fullName, birthYear) {
+        this.fullName = fullName;
         this.birthYear = birthYear;
     }
 
@@ -120,14 +120,54 @@ class Person {
     calcAge() {
         console.log(2021 - this.birthYear);
     }
+
+    get age() {
+        return 2021 - this.birthYear;
+    }
+
+    // Set a property that already exists
+    set fullName(name) {
+        if (name.includes(" ")) this._fullName = name;
+        else alert(`${name} is not a full Name`);
+    }
+
+    get fullName() {
+        return this._fullName;
+    }
 }
 
-const aakash = new Person("Aakash", 2000);
+const aakash = new Person("Aakash Chahal", 2000);
 console.log(aakash);
-aakash.calcAge();
+// aakash.calcAge();
+// getting age using getter
+console.log(aakash.age);
+console.log(aakash.fullName);
 
 console.log(aakash.__proto__ === Person.prototype);
 
 // 1. Classes are not hoisted
 // 2. Classes are also first-class citizen
 // 3. Classes are always executed in strict mode
+
+/* Setters and Getters */
+const acc = {
+    owner: "Aakash",
+    movements: [123, 811, 9000, 150],
+
+    // getter
+    get latest() {
+        return this.movements.slice(-1).pop();
+    },
+
+    // setter
+    set latest(mov) {
+        this.movements.push(mov);
+    },
+};
+// setters and getters works the same way in classes as well, shown in the above class example
+
+console.log(acc.latest);
+
+acc.latest = 200;
+console.log(acc.movements);
+console.log(acc.latest);
