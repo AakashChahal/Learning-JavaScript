@@ -15,6 +15,11 @@
 //     // console.log("After initializing instance propertiesand methods: ", this);
 // };
 
+// Static function function for the constructor function
+// Person.hey = function () {
+//     console.log("this is a static function");
+// };
+
 // const aakash = new Person("Aakash", 2000);
 // console.log(aakash);
 // /*
@@ -134,7 +139,14 @@ class Person {
     get fullName() {
         return this._fullName;
     }
+
+    // Static functions (these aren't added to .prototype, and can't be used by Objects)
+    static hey() {
+        console.log("this is a static function");
+    }
 }
+
+Person.hey();
 
 const aakash = new Person("Aakash Chahal", 2000);
 console.log(aakash);
