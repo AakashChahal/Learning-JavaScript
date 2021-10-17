@@ -108,3 +108,26 @@ car1.accelerate();
 car2.brake();
 car2.accelerate();
 car1.accelerate();
+
+/* ES6 Classes */
+class Person {
+    constructor(firstName, birthYear) {
+        this.firstName = firstName;
+        this.birthYear = birthYear;
+    }
+
+    // this is same as adding methods using .prototype for a constructor function
+    calcAge() {
+        console.log(2021 - this.birthYear);
+    }
+}
+
+const aakash = new Person("Aakash", 2000);
+console.log(aakash);
+aakash.calcAge();
+
+console.log(aakash.__proto__ === Person.prototype);
+
+// 1. Classes are not hoisted
+// 2. Classes are also first-class citizen
+// 3. Classes are always executed in strict mode
