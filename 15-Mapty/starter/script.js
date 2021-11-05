@@ -24,10 +24,30 @@ navigator.geolocation.getCurrentPosition(
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
 
-    L.marker(coords)
-      .addTo(map)
-      .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-      .openPopup();
+    // Defualt Marker
+    // L.marker(coords)
+    //   .addTo(map)
+    //   .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    //   .openPopup();
+
+    map.on('click', function (mapEvent) {
+      const { lat, lng } = mapEvent.latlng;
+      const newCoords = [lat, lng];
+
+      L.marker(newCoords)
+        .addTo(map)
+        .bindPopup(
+          L.popup({
+            maxWidth: 250,
+            minWidth: 100,
+            autoClose: false,
+            closeOnClick: false,
+            className: 'running-popup',
+          })
+        )
+        .setPopupContent('Workout')
+        .openPopup();
+    });
   },
   function () {
     console.log('Unable to get your position');
