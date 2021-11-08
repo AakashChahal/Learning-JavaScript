@@ -31,11 +31,6 @@ navigator.geolocation.getCurrentPosition(
     //   .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
     //   .openPopup();
 
-    // const markerIcon = L.icon({
-    //   iconUrl: 'icon.png',
-    //   iconSize: [38, 45],
-    // });
-
     map.on('click', function (mapEv) {
       mapEvent = mapEv;
       form.classList.remove('hidden');
@@ -73,6 +68,7 @@ form.addEventListener('submit', function (e) {
     )
     .setPopupContent('Workout')
     .openPopup();
+  form.classList.add('hidden');
 });
 
 inputType.addEventListener('change', function () {
