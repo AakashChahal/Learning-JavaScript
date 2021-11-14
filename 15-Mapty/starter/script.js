@@ -48,6 +48,8 @@ class Cycling extends Workout {
   }
 }
 
+// const run1 = new Running([-90, 80], 80, 700, 13);
+
 class App {
   #map;
   #mapEvent;
