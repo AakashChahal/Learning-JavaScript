@@ -65,12 +65,17 @@ class App {
   #map;
   #mapEvent;
   #workouts = [];
+  #mapZoom = 15;
+
   constructor() {
     this._getPosition();
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField);
 
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
+
+    // getting workouts from local storage
+    this._getWorkouts();
   }
 
   _getPosition() {
@@ -87,7 +92,7 @@ class App {
     const { latitude, longitude } = pos.coords;
     const coords = [latitude, longitude];
     // console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
-    this.#map = L.map('map').setView(coords, 15);
+    this.#map = L.map('map').setView(coords, this.#mapZoom);
 
     L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       attribution:
@@ -101,6 +106,11 @@ class App {
     //   .openPopup();
 
     this.#map.on('click', this._showForm.bind(this));
+
+    this.#workouts.forEach(workout => {
+      this._renderWorkout(workout);
+      this._renderWorkoutMarker(workout);
+    });
   }
 
   _showForm(mapEv) {
@@ -181,6 +191,9 @@ class App {
 
     // hide form + clear input fields
     this._hideForm();
+
+    // storing workouts in local storage
+    this._storeWorkout();
   }
 
   _renderWorkoutMarker(workout) {
@@ -263,12 +276,27 @@ class App {
     );
     // console.log(workout.coords);
 
-    this.#map.setView(workout.coords, 20, {
+    this.#map.setView(workout.coords, this.#mapZoom + 2, {
       animate: true,
       pan: {
         duration: 2,
       },
     });
+  }
+
+  _storeWorkout() {
+    localStorage.setItem('workouts', JSON.stringify(this.#workouts));
+  }
+
+  _getWorkouts() {
+    const data = JSON.parse(localStorage.getItem('workouts'));
+    if (!data) return;
+    this.#workouts = data;
+  }
+
+  resetApp() {
+    localStorage.removeItem('workouts');
+    location.reload();
   }
 }
 
