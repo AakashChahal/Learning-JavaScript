@@ -14,6 +14,7 @@ const inputElevation = document.querySelector('.form__input--elevation');
 class Workout {
   date = new Date();
   id = (Date.now() + '').slice(-10);
+  clicks = 0;
 
   constructor(coords, distance, duration) {
     this.coords = coords;
@@ -26,6 +27,10 @@ class Workout {
     this.description = `${this.type[0].toUpperCase() + this.type.slice(1)} on ${
       months[this.date.getMonth()]
     } ${this.date.getDate()}`;
+  }
+
+  click() {
+    this.clicks++;
   }
 }
 
@@ -282,6 +287,9 @@ class App {
         duration: 2,
       },
     });
+
+    workout.click();
+    console.log(workout);
   }
 
   _storeWorkout() {
@@ -291,7 +299,23 @@ class App {
   _getWorkouts() {
     const data = JSON.parse(localStorage.getItem('workouts'));
     if (!data) return;
-    this.#workouts = data;
+    this.#workouts = data.map(work => {
+      if (work.type === 'running')
+        return new Running(
+          work.coords,
+          work.distance,
+          work.duration,
+          work.cadence
+        );
+
+      if (work.type === 'cycling')
+        return new Cycling(
+          work.coords,
+          work.distance,
+          work.duration,
+          work.elevation
+        );
+    });
   }
 
   resetApp() {
