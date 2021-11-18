@@ -99,6 +99,7 @@ class App {
       this.#workouts.sort((work1, work2) => work1.distance - work2.distance);
       this._storeWorkout();
       this.#workouts.forEach(workout => this._renderWorkout(workout));
+      location.reload();
     }
     if (e.target.classList.contains('clear')) {
       this.resetApp();
