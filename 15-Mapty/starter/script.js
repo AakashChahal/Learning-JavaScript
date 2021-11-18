@@ -10,6 +10,13 @@ const inputDistance = document.querySelector('.form__input--distance');
 const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
+const toolbar = document.querySelector('.toolbar');
+const update = document.querySelector('.workout__edit');
+const error = document.querySelector('.error-msg');
+const edit = document.querySelector('.update');
+const del = document.querySelector('.delete');
+const sort = document.querySelector('.sort');
+const clear = document.querySelector('.del');
 
 class Workout {
   date = new Date();
@@ -77,10 +84,25 @@ class App {
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField);
 
-    containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
+    containerWorkouts.addEventListener(
+      'click',
+      this._handleWorkoutList.bind(this)
+    );
 
-    // getting workouts from local storage
+    toolbar.addEventListener('click', this._handleToolbar.bind(this));
     this._getWorkouts();
+  }
+
+  _handleToolbar(e) {
+    if (e.target.classList.contains('sort')) {
+      console.log(this.#workouts);
+      this.#workouts.sort((work1, work2) => work1.distance - work2.distance);
+      this._storeWorkout();
+      this.#workouts.forEach(workout => this._renderWorkout(workout));
+    }
+    if (e.target.classList.contains('clear')) {
+      this.resetApp();
+    }
   }
 
   _getPosition() {
@@ -167,7 +189,9 @@ class App {
         !validInputs(distance, duration, cadence) ||
         !allPositive(distance, duration, cadence)
       ) {
-        return alert('Input must be positive number');
+        error.classList.remove('hide');
+        setTimeout(() => error.classList.add('hide'), 1000);
+        return;
       }
 
       workout = new Running(newCoords, distance, duration, cadence);
@@ -179,7 +203,9 @@ class App {
         !validInputs(distance, duration, elevation) ||
         !allPositive(distance, duration)
       ) {
-        return alert('Input must be positive number');
+        error.classList.remove('hide');
+        setTimeout(() => error.classList.add('hide'), 1000);
+        return;
       }
 
       workout = new Cycling(newCoords, distance, duration, elevation);
@@ -224,7 +250,7 @@ class App {
         <li class="workout workout--${workout.type}" data-id="${workout.id}">
           <h2 class="workout__title">${workout.description}</h2>
           <span class="workout__edit">
-            <span class="update">✎EDIT</span>
+            <!-- <span class="update">✎EDIT</span> -->
             <span class="delete">🗑DEL</span>
           </span>
           <div class="workout__details">
@@ -276,15 +302,23 @@ class App {
     form.insertAdjacentHTML('afterend', html);
   }
 
-  _moveToPopup(e) {
+  _handleWorkoutList(e) {
     const workoutEl = e.target.closest('.workout');
     if (!workoutEl) return;
-    console.log(workoutEl);
-
     const workout = this.#workouts.find(
       work => work.id === workoutEl.dataset.id
     );
-    console.log(workout);
+
+    if (e.target.classList.contains('update')) {
+      console.log('updation');
+    }
+    if (e.target.classList.contains('delete')) {
+      this.#workouts.splice([...this.#workouts].indexOf(workout), 1);
+      this._storeWorkout();
+      location.reload();
+
+      return;
+    }
 
     this.#map.setView(workout.coords, this.#mapZoom + 2, {
       animate: true,
@@ -294,7 +328,6 @@ class App {
     });
 
     workout.click();
-    // console.log(workout);
   }
 
   _storeWorkout() {
@@ -321,7 +354,7 @@ class App {
           work.elevationGain
         );
     });
-    console.log(this.#workouts);
+    // console.log(this.#workouts);
   }
 
   resetApp() {

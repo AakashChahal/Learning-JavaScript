@@ -29,9 +29,10 @@
       <img src="logo.png" alt="Logo" class="logo" />
       <span class="toolbar">
         <span class="sort">↑↓SORT</span>
-        <span class="del">🗑Clear</span>
+        <span class="clear">🗑Clear</span>
       </span>
       <ul class="workouts">
+        <span class="error-msg hide">Inputs can only be positive numbers</span>
         <form class="form hidden">
           <div class="form__row">
             <label class="form__label">Type</label>
@@ -67,7 +68,6 @@
           </div>
           <button class="form__btn">OK</button>
         </form>
-        <span class="error-msg hide">Inputs can only be positive numbers</span>
 
         <!-- <li class="workout workout--running" data-id="1234567890">
           <h2 class="workout__title">Running on April 14</h2>
