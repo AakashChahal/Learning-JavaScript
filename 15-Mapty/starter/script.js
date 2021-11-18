@@ -13,7 +13,7 @@ const inputElevation = document.querySelector('.form__input--elevation');
 
 class Workout {
   date = new Date();
-  id = (Date.now() + '').slice(-10);
+  id = (Math.random() * (10000000 - 100000) + 100000).toFixed(0);
   clicks = 0;
 
   constructor(coords, distance, duration) {
@@ -223,6 +223,10 @@ class App {
     let html = `
         <li class="workout workout--${workout.type}" data-id="${workout.id}">
           <h2 class="workout__title">${workout.description}</h2>
+          <span class="workout__edit">
+            <span class="update">✎EDIT</span>
+            <span class="delete">🗑DEL</span>
+          </span>
           <div class="workout__details">
             <span class="workout__icon">${
               workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'
@@ -275,11 +279,12 @@ class App {
   _moveToPopup(e) {
     const workoutEl = e.target.closest('.workout');
     if (!workoutEl) return;
+    console.log(workoutEl);
 
     const workout = this.#workouts.find(
       work => work.id === workoutEl.dataset.id
     );
-    // console.log(workout.coords);
+    console.log(workout);
 
     this.#map.setView(workout.coords, this.#mapZoom + 2, {
       animate: true,
@@ -289,7 +294,7 @@ class App {
     });
 
     workout.click();
-    console.log(workout);
+    // console.log(workout);
   }
 
   _storeWorkout() {
@@ -313,9 +318,10 @@ class App {
           work.coords,
           work.distance,
           work.duration,
-          work.elevation
+          work.elevationGain
         );
     });
+    console.log(this.#workouts);
   }
 
   resetApp() {

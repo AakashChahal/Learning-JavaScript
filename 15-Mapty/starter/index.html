@@ -27,7 +27,10 @@
   <body>
     <div class="sidebar">
       <img src="logo.png" alt="Logo" class="logo" />
-
+      <span class="toolbar">
+        <span class="sort">↑↓SORT</span>
+        <span class="del">🗑Clear</span>
+      </span>
       <ul class="workouts">
         <form class="form hidden">
           <div class="form__row">
@@ -64,9 +67,14 @@
           </div>
           <button class="form__btn">OK</button>
         </form>
+        <span class="error-msg hide">Inputs can only be positive numbers</span>
 
         <!-- <li class="workout workout--running" data-id="1234567890">
           <h2 class="workout__title">Running on April 14</h2>
+          <span class="workout__edit">
+            <span class="update">✎EDIT</span>
+            <span class="delete">🗑DEL</span>
+          </span>
           <div class="workout__details">
             <span class="workout__icon">🏃‍♂️</span>
             <span class="workout__value">5.2</span>
@@ -123,6 +131,16 @@
           >Jonas Schmedtmann</a
         >. Use for learning or your portfolio. Don't use to teach. Don't claim
         as your own.
+      </p>
+      <hr />
+      <p class="copyright">
+        Created and Updated by
+        <a
+          class="twitter-link"
+          target="_blank"
+          href="https://twitter.com/_aakashchahal"
+          >Aakash Chahal</a
+        >
       </p>
     </div>
 
