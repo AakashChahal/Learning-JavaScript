@@ -72,6 +72,7 @@ const renderCountry = function (data, className = "") {
 // const req = fetch("https://restcountries.com/v2/name/united%20kingdom"); // creates a new Promise
 // console.log(req);
 
+// /* consuming promises */
 // const getCountryData = function (country) {
 //     fetch(`https://restcountries.com/v2/name/${country}`)
 //         .then(function (response) {
@@ -87,7 +88,17 @@ const renderCountry = function (data, className = "") {
 const getCountryData = function (country) {
     fetch(`https://restcountries.com/v2/name/${country}`)
         .then((response) => response.json())
-        .then((data) => renderCountry(data[0]));
+        .then((data) => {
+            renderCountry(data[0]);
+            const neighbour = data[0].borders[0];
+
+            if (!neighbour) return;
+
+            return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
+        })
+        .then((res) => res.json())
+        .then((newData) => renderCountry(newData, "neighbour"));
 };
 
 getCountryData("united kingdom");
+// getCountryData("usa");
