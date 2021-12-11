@@ -29,39 +29,65 @@ const renderCountry = function (data, className = "") {
     countriesContainer.style.opacity = 1;
 };
 
-const getCountryAndNeighbour = function (country) {
-    // AJAX call for country
-    const req = new XMLHttpRequest();
-    req.open("GET", `https://restcountries.com/v2/name/${country}`);
-    req.send();
+// const getCountryAndNeighbour = function (country) {
+//     // AJAX call for country
+//     const req = new XMLHttpRequest();
+//     req.open("GET", `https://restcountries.com/v2/name/${country}`);
+//     req.send();
 
-    req.addEventListener("load", function () {
-        // console.log(this.responseText);
+//     req.addEventListener("load", function () {
+//         // console.log(this.responseText);
 
-        const [data] = JSON.parse(this.responseText);
-        // console.log(data);
-        renderCountry(data);
+//         const [data] = JSON.parse(this.responseText);
+//         // console.log(data);
+//         renderCountry(data);
 
-        // Neighbour Country
-        const [neighbour] = data.borders;
+//         // Neighbour Country
+//         const [neighbour] = data.borders;
 
-        if (!neighbour) return;
-        console.log(neighbour);
+//         if (!neighbour) return;
+//         console.log(neighbour);
 
-        // AJAX call for neighbout country
-        const req2 = new XMLHttpRequest();
-        req2.open("GET", `https://restcountries.com/v2/alpha/${neighbour}`);
-        req2.send();
+//         // AJAX call for neighbout country
+//         const req2 = new XMLHttpRequest();
+//         req2.open("GET", `https://restcountries.com/v2/alpha/${neighbour}`);
+//         req2.send();
 
-        req2.addEventListener("load", function () {
-            const newData = JSON.parse(this.responseText);
-            // console.log(this.responseText);
-            renderCountry(newData, "neighbour");
-        });
-    });
+//         req2.addEventListener("load", function () {
+//             const newData = JSON.parse(this.responseText);
+//             // console.log(this.responseText);
+//             renderCountry(newData, "neighbour");
+//         });
+//     });
+// };
+
+// // these may appear in different order, because data arrives at different time
+// // getCountryAndNeighbour("Ireland");
+// getCountryAndNeighbour("United Kingdom");
+// // getCountryAndNeighbour("usa");
+
+/* Promises and Fetch API */
+// code to understand fetch API and promises
+
+// const req = fetch("https://restcountries.com/v2/name/united%20kingdom"); // creates a new Promise
+// console.log(req);
+
+// const getCountryData = function (country) {
+//     fetch(`https://restcountries.com/v2/name/${country}`)
+//         .then(function (response) {
+//             console.log(response);
+//             return response.json(); // to be able to read the data (a new promise will be made, so we use another then method)
+//         })
+//         .then(function (data) {
+//             console.log(data);
+//             renderCountry(data[0]);
+//         });
+// };
+
+const getCountryData = function (country) {
+    fetch(`https://restcountries.com/v2/name/${country}`)
+        .then((response) => response.json())
+        .then((data) => renderCountry(data[0]));
 };
 
-// these may appear in different order, because data arrives at different time
-// getCountryAndNeighbour("Ireland");
-getCountryAndNeighbour("United Kingdom");
-// getCountryAndNeighbour("usa");
+getCountryData("united kingdom");
