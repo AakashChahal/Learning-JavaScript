@@ -72,6 +72,12 @@ const whereAmI = function (lat, lng) {
         });
 };
 
-whereAmI(52.508, 13.381);
-whereAmI(19.037, 72.873);
-whereAmI(-33.933, 18.474);
+setTimeout(function () {
+    whereAmI(52.508, 13.381);
+    setTimeout(function () {
+        whereAmI(54.23527, -2.00622);
+        setTimeout(function () {
+            whereAmI(-33.933, 18.474);
+        }, 1000);
+    }, 1000);
+}, 1000);
