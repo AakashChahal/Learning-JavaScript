@@ -153,3 +153,16 @@ btn.addEventListener("click", function () {
     getCountryData("australia");
     // getCountryData("usa");
 });
+
+/* The event loop: In practice */
+console.log("Test start");
+setTimeout(() => console.log("0 sec timer"), 0);
+Promise.resolve("Resolved promise 1").then((res) => console.log(res)); // printed before the timer because callbacks for promise are stored in microtasks queue instead of callback queue and are also given priority over the callback functions stored in the callback queue
+
+Promise.resolve("Resolved promise 2").then((res) => {
+    for (let i = 0; i < 1000000000; i++) {
+        continue;
+    }
+    console.log(res);
+});
+console.log("Test end");
