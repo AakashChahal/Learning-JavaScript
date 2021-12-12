@@ -9,6 +9,46 @@
 // 6. Now it's time to use the received data to render a country. So take the relevant attribute from the geocoding API result, and plug it into the countries API that we have been using.
 // 7. Render the country and catch any errors, just like we have done in the last lecture (you can even copy this code, no need to type the same code)
 
+const countriesContainer = document.querySelector(".countries");
+
+const renderCountry = function (data) {
+    data = data[0];
+    const html = `
+        <article class="country">
+            <img class="country__img" src="${data.flag}" />
+            <div class="country__data">
+                    <h3 class="country__name">${data.name}</h3>
+                    <h4 class="country__region">${data.region}</h4>
+                    <p class="country__row"><span>👫</span>${(
+                        +data.population / 1000000
+                    ).toFixed(2)} M </p>
+                    <p class="country__row"><span>🗣️</span>${
+                        data.languages[0].name
+                    }</p>
+                    <p class="country__row"><span>💰</span>${
+                        data.currencies[0].name
+                    }</p>
+            </div>
+        </article>
+        `;
+
+    countriesContainer.insertAdjacentHTML("beforeend", html);
+};
+
+const getCountryData = function (country) {
+    fetch(`https://restcountries.com/v2/name/${country}`)
+        .then((response) => {
+            if (!response.ok) throw new Error("Country not found!! Try again");
+
+            return response.json();
+        })
+        .then((data) => renderCountry(data))
+        .catch((err) => console.error(err))
+        .finally(() => {
+            countriesContainer.style.opacity = 1;
+        });
+};
+
 const whereAmI = function (lat, lng) {
     // console.log(lat, lng);
     fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
@@ -24,8 +64,12 @@ const whereAmI = function (lat, lng) {
             // console.log(data);
             // const { city, country } = data;
             console.log(`You are in ${data.city}, ${data.country}`);
+            getCountryData(data.country);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => console.error(error))
+        .finally(function () {
+            console.log("Geocode API call finished!");
+        });
 };
 
 whereAmI(52.508, 13.381);
