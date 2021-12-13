@@ -220,16 +220,28 @@ const getCurrPosition = () =>
 
 // * consuming promises with async/await *
 const whereAmI = async function (country) {
-    const pos = await getCurrPosition();
-    const { latitude: lat, longitude: lng } = pos.coords;
-    const geoRes = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
-    const geoData = await geoRes.json();
-    console.log(geoData);
-    const res = await fetch(`https://restcountries.com/v2/name/${country}`);
-    const data = await res.json();
-    console.log(data);
-    renderCountry(data[0]);
+    try {
+        const pos = await getCurrPosition();
+        const { latitude: lat, longitude: lng } = pos.coords;
+
+        const geoRes = await fetch(
+            `https://geocode.xyz/${lat},${lng}?geoit=json`
+        );
+        if (!geoRes.ok) throw new Error("API call limit exceeded");
+        const geoData = await geoRes.json();
+        console.log(geoData);
+
+        const res = await fetch(
+            `https://restcountries.com/v2/name/${geoData.country}`
+        );
+        if (!res.ok) throw new Error("location not found");
+        const data = await res.json();
+        console.log(data);
+        renderCountry(data[0]);
+    } catch (error) {
+        console.error(`${error} 🔴`);
+    }
 };
 
-whereAmI("united kingdom");
+whereAmI();
 console.log("log");
