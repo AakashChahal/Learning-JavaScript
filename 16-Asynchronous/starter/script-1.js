@@ -94,4 +94,55 @@ const whereAmI = function () {
 //     }, 1000);
 // }, 1000);
 
-btn.addEventListener("click", whereAmI);
+// btn.addEventListener("click", whereAmI);
+
+/* Challenge #2 */
+// *** PART 1 *** //
+// 1. Create a function 'createImage' which receives 'imgPath' as an input. This function returns a promise which creates a new image (use document.createElement('img')) and sets the .src attribute to the provided image path
+// 2. When the image is done loading, append it to the DOM element with the 'images' class, and resolve the promise. The fulfilled value should be the image element itself. In case there is an error loading the image (listen for the'error' event), reject the promise
+
+// *** PART 2 *** //
+// 1. Consume the promise using .then and also add an error handler
+// 2. After the image has loaded, pause execution for 2 seconds using the 'wait' function we created earlier
+// 3. After the 2 seconds have passed, hide the current image (set display CSS property to 'none'), and load a second image
+// 4. After the second image has loaded, pause execution for 2 seconds again
+// 5. After the 2 seconds have passed, hide the current image
+
+const images = document.querySelector(".images");
+
+const wait = (seconds) =>
+    new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+
+const createImg = function (imgPath) {
+    return new Promise(function (resolve, reject) {
+        const newImg = document.createElement("img");
+        newImg.src = imgPath;
+
+        newImg.addEventListener("load", function () {
+            images.appendChild(newImg);
+            resolve(newImg);
+        });
+
+        newImg.addEventListener("error", reject);
+    });
+};
+
+createImg("./img/img-1.jpg")
+    .then((img) => {
+        wait(2)
+            .then(() => {
+                img.style.display = "none";
+                return createImg("./img/img-2.jpg");
+            })
+            .then((img) => {
+                wait(2)
+                    .then(() => {
+                        img.style.display = "none";
+                        return createImg("./img/img-3.jpg");
+                    })
+                    .then((img) => {
+                        wait(2).then(() => (img.style.display = "none"));
+                    });
+            });
+    })
+    .catch((err) => console.error(err));
