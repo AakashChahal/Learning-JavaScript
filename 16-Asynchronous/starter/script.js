@@ -31,50 +31,50 @@ const renderCountry = function (data, className = "") {
 
 const renderError = function (errMsg) {
     countriesContainer.insertAdjacentText("beforeend", errMsg);
-    // countriesContainer.style.opacity = 1;
+    countriesContainer.style.opacity = 1;
 };
 
 // const getCountryAndNeighbour = function (country) {
-//     // AJAX call for country
+// ?     AJAX call for country
 //     const req = new XMLHttpRequest();
 //     req.open("GET", `https://restcountries.com/v2/name/${country}`);
 //     req.send();
 
 //     req.addEventListener("load", function () {
-//         // console.log(this.responseText);
+// //         console.log(this.responseText);
 
 //         const [data] = JSON.parse(this.responseText);
-//         // console.log(data);
+// //         console.log(data);
 //         renderCountry(data);
 
-//         // Neighbour Country
+// ?         Neighbour Country
 //         const [neighbour] = data.borders;
 
 //         if (!neighbour) return;
 //         console.log(neighbour);
 
-//         // AJAX call for neighbout country
+// ?         AJAX call for neighbout country
 //         const req2 = new XMLHttpRequest();
 //         req2.open("GET", `https://restcountries.com/v2/alpha/${neighbour}`);
 //         req2.send();
 
 //         req2.addEventListener("load", function () {
 //             const newData = JSON.parse(this.responseText);
-//             // console.log(this.responseText);
+// //             console.log(this.responseText);
 //             renderCountry(newData, "neighbour");
 //         });
 //     });
 // };
 
-// ? these may appear in different order, because data arrives at different time
-// // getCountryAndNeighbour("Ireland");
+// ! these may appear in different order, because data arrives at different time //
+// getCountryAndNeighbour("Ireland");
 // getCountryAndNeighbour("United Kingdom");
-// // getCountryAndNeighbour("usa");
+// getCountryAndNeighbour("usa");
 
 // * Promises and Fetch API */
 // code to understand fetch API and promises
 
-// const req = fetch("https://restcountries.com/v2/name/united%20kingdom"); // creates a new Promise
+// const req = fetch("https://restcountries.com/v2/name/united%20kingdom"); // ? creates a new Promise
 // console.log(req);
 
 // * consuming promises *
@@ -82,7 +82,7 @@ const renderError = function (errMsg) {
 //     fetch(`https://restcountries.com/v2/name/${country}`)
 //         .then(function (response) {
 //             console.log(response);
-//             return response.json(); // to be able to read the data (a new promise will be made, so we use another then method)
+//             return response.json(); // ? to be able to read the data (a new promise will be made, so we use another then method at line 87)
 //         })
 //         .then(function (data) {
 //             console.log(data);
@@ -154,7 +154,7 @@ btn.addEventListener("click", function () {
     // getCountryData("usa");
 });
 
-/* The event loop: In practice 
+/* //? The event loop: In practice ?// 
 console.log("Test start");
 setTimeout(() => console.log("0 sec timer"), 0);
 Promise.resolve("Resolved promise 1").then((res) => console.log(res)); // printed before the timer because callbacks for promise are stored in microtasks queue instead of callback queue and are also given priority over the callback functions stored in the callback queue
@@ -168,7 +168,7 @@ Promise.resolve("Resolved promise 2").then((res) => {
 console.log("Test end");
 */
 
-/* Building a simple promise */
+// * Building a simple promise * //
 // const lotteryPromise = new Promise(function (resolve, reject) {
 //     console.log("Lottery draw happening!! 🔮");
 //     setTimeout(function () {
@@ -181,7 +181,7 @@ console.log("Test end");
 //     .then((res) => console.log(res))
 //     .catch((err) => console.error(err));
 
-// * promisifying the setTimeout function *
+// * promisifying the setTimeout function * //
 // const wait = (seconds) =>
 //     new Promise((resolve) => setTimeout(resolve, seconds * 1000));
 
@@ -192,13 +192,13 @@ console.log("Test end");
 //     })
 //     .then(() => console.log("executed after 2 more seconds"));
 
-// * immediately resolve/rejected Promises *
+// * immediately resolve/rejected Promises * //
 // Promise.resolve("Promise resolved immediately").then((x) => console.log(x));
 // Promise.reject(new Error("Promise rejected immediately")).catch((err) =>
 //     console.error(err)
 // );
 
-// promisifying geoLocation API
+// * promisifying geoLocation API * //
 // navigator.geolocation.getCurrentPosition(
 //     (pos) => console.log(pos),
 //     (err) => console.error(err)
@@ -218,7 +218,7 @@ const getCurrPosition = () =>
 //     .then((pos) => console.log(pos))
 //     .catch((err) => console.error(err));
 
-// * consuming promises with async/await *
+// * consuming promises with async/await * //
 const whereAmI = async function (country) {
     try {
         const pos = await getCurrPosition();
@@ -229,19 +229,40 @@ const whereAmI = async function (country) {
         );
         if (!geoRes.ok) throw new Error("API call limit exceeded");
         const geoData = await geoRes.json();
-        console.log(geoData);
+        //// console.log(geoData);
 
         const res = await fetch(
             `https://restcountries.com/v2/name/${geoData.country}`
         );
         if (!res.ok) throw new Error("location not found");
         const data = await res.json();
-        console.log(data);
+        //// console.log(data);
+
         renderCountry(data[0]);
+
+        return `You are in ${geoData.city}, ${geoData.country}`;
     } catch (error) {
-        console.error(`${error} 🔴`);
+        console.error(`${error.message} 🔴`);
+        renderError(`💀 ${error.message} 💀`);
+
+        //! rejecting the promise returned from async function
+        throw error;
     }
 };
 
-whereAmI();
-console.log("log");
+console.log("1. Getting your location");
+// whereAmI()
+//     .then((city) => console.log(`2. ${city}`))
+//     .catch((err) => console.error(`2. ${err.message} 🔴`))
+//     .finally(() => console.log("3. Finished getting location"));
+
+(async function () {
+    try {
+        const city = await whereAmI();
+        console.log(`2. ${city}`);
+    } catch (error) {
+        console.error(`${error.message} 🔴`);
+    } finally {
+        console.log("3. Finished getting location");
+    }
+})();
