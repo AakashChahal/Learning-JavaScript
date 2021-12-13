@@ -141,7 +141,7 @@ const getCountryData = function (country) {
         .then((newData) => renderCountry(newData, "neighbour"))
         .catch((err) => {
             console.error(`Error Occured!!`);
-            renderError(`Something went wrong 😬: ${err.message}. Try again!`);
+            renderError(`Error😬: ${err.message}. Try again!`);
         })
         .finally(() => {
             countriesContainer.style.opacity = 1;
@@ -154,7 +154,7 @@ btn.addEventListener("click", function () {
     // getCountryData("usa");
 });
 
-/* The event loop: In practice */
+/* The event loop: In practice 
 console.log("Test start");
 setTimeout(() => console.log("0 sec timer"), 0);
 Promise.resolve("Resolved promise 1").then((res) => console.log(res)); // printed before the timer because callbacks for promise are stored in microtasks queue instead of callback queue and are also given priority over the callback functions stored in the callback queue
@@ -166,3 +166,28 @@ Promise.resolve("Resolved promise 2").then((res) => {
     console.log(res);
 });
 console.log("Test end");
+*/
+
+/* Building a simple promise */
+const lotteryPromise = new Promise(function (resolve, reject) {
+    console.log("Lottery draw happening!! 🔮");
+    setTimeout(function () {
+        if (Math.random() >= 0.5) resolve("You won the lottery! 💰");
+        else reject(new Error("You lost your money! 💵"));
+    }, 2000);
+});
+
+lotteryPromise
+    .then((res) => console.log(res))
+    .catch((err) => console.error(err));
+
+// promisifying the setTimeout function
+const wait = (seconds) =>
+    new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+
+wait(5)
+    .then(() => {
+        console.log("executed after 5 seconds");
+        return wait(2);
+    })
+    .then(() => console.log("executed after 2 more seconds"));
