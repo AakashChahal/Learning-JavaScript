@@ -26,7 +26,7 @@ const renderCountry = function (data, className = "") {
         `;
 
     countriesContainer.insertAdjacentHTML("beforeend", html);
-    // countriesContainer.style.opacity = 1;
+    countriesContainer.style.opacity = 1;
 };
 
 const renderError = function (errMsg) {
@@ -66,18 +66,18 @@ const renderError = function (errMsg) {
 //     });
 // };
 
-// // these may appear in different order, because data arrives at different time
+// ? these may appear in different order, because data arrives at different time
 // // getCountryAndNeighbour("Ireland");
 // getCountryAndNeighbour("United Kingdom");
 // // getCountryAndNeighbour("usa");
 
-/* Promises and Fetch API */
+// * Promises and Fetch API */
 // code to understand fetch API and promises
 
 // const req = fetch("https://restcountries.com/v2/name/united%20kingdom"); // creates a new Promise
 // console.log(req);
 
-// /* consuming promises */
+// * consuming promises *
 // const getCountryData = function (country) {
 //     fetch(`https://restcountries.com/v2/name/${country}`)
 //         .then(function (response) {
@@ -181,7 +181,7 @@ console.log("Test end");
 //     .then((res) => console.log(res))
 //     .catch((err) => console.error(err));
 
-// // promisifying the setTimeout function
+// * promisifying the setTimeout function *
 // const wait = (seconds) =>
 //     new Promise((resolve) => setTimeout(resolve, seconds * 1000));
 
@@ -192,7 +192,7 @@ console.log("Test end");
 //     })
 //     .then(() => console.log("executed after 2 more seconds"));
 
-// // immediately resolve/rejected Promises
+// * immediately resolve/rejected Promises *
 // Promise.resolve("Promise resolved immediately").then((x) => console.log(x));
 // Promise.reject(new Error("Promise rejected immediately")).catch((err) =>
 //     console.error(err)
@@ -214,6 +214,22 @@ const getCurrPosition = () =>
         navigator.geolocation.getCurrentPosition(resolve, reject);
     });
 
-getCurrPosition()
-    .then((pos) => console.log(pos))
-    .catch((err) => console.error(err));
+// getCurrPosition()
+//     .then((pos) => console.log(pos))
+//     .catch((err) => console.error(err));
+
+// * consuming promises with async/await *
+const whereAmI = async function (country) {
+    const pos = await getCurrPosition();
+    const { latitude: lat, longitude: lng } = pos.coords;
+    const geoRes = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+    const geoData = await geoRes.json();
+    console.log(geoData);
+    const res = await fetch(`https://restcountries.com/v2/name/${country}`);
+    const data = await res.json();
+    console.log(data);
+    renderCountry(data[0]);
+};
+
+whereAmI("united kingdom");
+console.log("log");
