@@ -84,15 +84,15 @@ const whereAmI = function () {
         });
 };
 
-// setTimeout(function () {
-//     whereAmI(52.508, 13.381);
-//     setTimeout(function () {
-//         whereAmI(54.23527, -2.00622);
-//         setTimeout(function () {
-//             whereAmI(-33.933, 18.474);
-//         }, 1000);
-//     }, 1000);
-// }, 1000);
+setTimeout(function () {
+    whereAmI(52.508, 13.381);
+    setTimeout(function () {
+        whereAmI(54.23527, -2.00622);
+        setTimeout(function () {
+            whereAmI(-33.933, 18.474);
+        }, 1000);
+    }, 1000);
+}, 1000);
 
 // btn.addEventListener("click", whereAmI);
 
