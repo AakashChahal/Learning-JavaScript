@@ -9,10 +9,10 @@
 // 6. Now it's time to use the received data to render a country. So take the relevant attribute from the geocoding API result, and plug it into the countries API that we have been using.
 // 7. Render the country and catch any errors, just like we have done in the last lecture (you can even copy this code, no need to type the same code)
 
+const btn = document.querySelector(".btn-country");
 const countriesContainer = document.querySelector(".countries");
 
 const renderCountry = function (data) {
-    data = data[0];
     const html = `
         <article class="country">
             <img class="country__img" src="${data.flag}" />
@@ -42,16 +42,28 @@ const getCountryData = function (country) {
 
             return response.json();
         })
-        .then((data) => renderCountry(data))
+        .then((data) => {
+            if (country == "India") renderCountry(data[1]);
+            else renderCountry(data[0]);
+        })
         .catch((err) => console.error(err))
         .finally(() => {
             countriesContainer.style.opacity = 1;
         });
 };
 
-const whereAmI = function (lat, lng) {
-    // console.log(lat, lng);
-    fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+const getCurrPosition = () => {
+    return new Promise(function (resolve, reject) {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+};
+
+const whereAmI = function () {
+    getCurrPosition()
+        .then((pos) => {
+            const { latitude: lat, longitude: lng } = pos.coords;
+            return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+        })
         .then((res) => {
             if (!res.ok)
                 throw new Error(
@@ -72,12 +84,14 @@ const whereAmI = function (lat, lng) {
         });
 };
 
-setTimeout(function () {
-    whereAmI(52.508, 13.381);
-    setTimeout(function () {
-        whereAmI(54.23527, -2.00622);
-        setTimeout(function () {
-            whereAmI(-33.933, 18.474);
-        }, 1000);
-    }, 1000);
-}, 1000);
+// setTimeout(function () {
+//     whereAmI(52.508, 13.381);
+//     setTimeout(function () {
+//         whereAmI(54.23527, -2.00622);
+//         setTimeout(function () {
+//             whereAmI(-33.933, 18.474);
+//         }, 1000);
+//     }, 1000);
+// }, 1000);
+
+btn.addEventListener("click", whereAmI);
