@@ -169,25 +169,51 @@ console.log("Test end");
 */
 
 /* Building a simple promise */
-const lotteryPromise = new Promise(function (resolve, reject) {
-    console.log("Lottery draw happening!! 🔮");
-    setTimeout(function () {
-        if (Math.random() >= 0.5) resolve("You won the lottery! 💰");
-        else reject(new Error("You lost your money! 💵"));
-    }, 2000);
-});
+// const lotteryPromise = new Promise(function (resolve, reject) {
+//     console.log("Lottery draw happening!! 🔮");
+//     setTimeout(function () {
+//         if (Math.random() >= 0.5) resolve("You won the lottery! 💰");
+//         else reject(new Error("You lost your money! 💵"));
+//     }, 2000);
+// });
 
-lotteryPromise
-    .then((res) => console.log(res))
+// lotteryPromise
+//     .then((res) => console.log(res))
+//     .catch((err) => console.error(err));
+
+// // promisifying the setTimeout function
+// const wait = (seconds) =>
+//     new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+
+// wait(5)
+//     .then(() => {
+//         console.log("executed after 5 seconds");
+//         return wait(2);
+//     })
+//     .then(() => console.log("executed after 2 more seconds"));
+
+// // immediately resolve/rejected Promises
+// Promise.resolve("Promise resolved immediately").then((x) => console.log(x));
+// Promise.reject(new Error("Promise rejected immediately")).catch((err) =>
+//     console.error(err)
+// );
+
+// promisifying geoLocation API
+// navigator.geolocation.getCurrentPosition(
+//     (pos) => console.log(pos),
+//     (err) => console.error(err)
+// );
+// console.log("getting geo location");
+
+const getCurrPosition = () =>
+    new Promise(function (resolve, reject) {
+        // navigator.geolocation.getCurrentPosition(
+        //     (pos) => resolve(pos),
+        //     (err) => reject(new Error(err))
+        // );
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+
+getCurrPosition()
+    .then((pos) => console.log(pos))
     .catch((err) => console.error(err));
-
-// promisifying the setTimeout function
-const wait = (seconds) =>
-    new Promise((resolve) => setTimeout(resolve, seconds * 1000));
-
-wait(5)
-    .then(() => {
-        console.log("executed after 5 seconds");
-        return wait(2);
-    })
-    .then(() => console.log("executed after 2 more seconds"));
