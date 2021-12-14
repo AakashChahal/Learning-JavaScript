@@ -250,19 +250,50 @@ const whereAmI = async function (country) {
     }
 };
 
-console.log("1. Getting your location");
-// whereAmI()
-//     .then((city) => console.log(`2. ${city}`))
-//     .catch((err) => console.error(`2. ${err.message} 🔴`))
-//     .finally(() => console.log("3. Finished getting location"));
+// console.log("1. Getting your location");
+// // whereAmI()
+// //     .then((city) => console.log(`2. ${city}`))
+// //     .catch((err) => console.error(`2. ${err.message} 🔴`))
+// //     .finally(() => console.log("3. Finished getting location"));
 
-(async function () {
+// (async function () {
+//     try {
+//         const city = await whereAmI();
+//         console.log(`2. ${city}`);
+//     } catch (error) {
+//         console.error(`${error.message} 🔴`);
+//     } finally {
+//         console.log("3. Finished getting location");
+//     }
+// })();
+
+//* Running promises in parallel *//
+const get3Countries = async function (c1, c2, c3) {
     try {
-        const city = await whereAmI();
-        console.log(`2. ${city}`);
+        //! this code forces data2 and data3 to wait for the previous promises to resolve, even when they are not dependent on each other
+        // const [data1] = await getJSON(
+        //     `https://restcountries.com/v2/name/${c1}`
+        // );
+        // const [data2] = await getJSON(
+        //     `https://restcountries.com/v2/name/${c3}`
+        // );
+        // const [data3] = await getJSON(
+        //     `https://restcountries.com/v2/name/${c2}`
+        // );
+
+        // console.log([data1.capital, data2.capital, data3.capital]);
+
+        //? to overcome the above issue, we can run all the promises in parallel using Promise.all() combinator function [but if a single promise is rejected all other promises will not be resolved]
+        const data = await Promise.all([
+            getJSON(`https://restcountries.com/v2/name/${c1}`),
+            getJSON(`https://restcountries.com/v2/name/${c3}`),
+            getJSON(`https://restcountries.com/v2/name/${c2}`),
+        ]);
+
+        console.log(data.map((d) => d[0].capital));
     } catch (error) {
-        console.error(`${error.message} 🔴`);
-    } finally {
-        console.log("3. Finished getting location");
+        console.error(error);
     }
-})();
+};
+
+get3Countries("united kingdom", "usa", "germany");
