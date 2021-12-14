@@ -1,13 +1,15 @@
-// * Challenge #1 */
-// *** PART 1 *** //
-// 1. Create a function 'whereAmI' which takes as inputs a latitude value ('lat') and a longitude value ('lng') (these are GPS coordinates, examples are in test data below).
-// 2. Do “reverse geocoding” of the provided coordinates. Reverse geocoding means to convert coordinates to a meaningful location, like a city and country name. Use this API to do reverse geocoding: https://geocode.xyz/api. The AJAX call will be done to a URL with this format:  https://geocode.xyz/52.508,13.381?geoit=json. Use the fetch API and promises to get the data. Do not use the 'getJSON' function we created, that is cheating 😉
-// 3. Once you have the data, take a look at it in the console to see all the attributes that you received about the provided location. Then, using this data, log a message like this to the console: “You are in Berlin, Germany”
-// 4. Chain a .catch method to the end of the promise chain and log errors to the console
-// 5. This API allows you to make only 3 requests per second. If you reload fast, you will get this error with code 403. This is an error with the request. Remember, fetch() does not reject the promise in this case. So create an error to reject the promise yourself, with a meaningful error message.
-// *** PART 2 *** //
-// 6. Now it's time to use the received data to render a country. So take the relevant attribute from the geocoding API result, and plug it into the countries API that we have been using.
-// 7. Render the country and catch any errors, just like we have done in the last lecture (you can even copy this code, no need to type the same code)
+/*
+*   Challenge #1 *
+*   PART 1 *
+?   1. Create a function 'whereAmI' which takes as inputs a latitude value ('lat') and a longitude value ('lng') (these are GPS coordinates, examples are in test data below).
+?   2. Do “reverse geocoding” of the provided coordinates. Reverse geocoding means to convert coordinates to a meaningful location, like a city and country name. Use this API to do reverse geocoding: https://geocode.xyz/api. The AJAX call will be done to a URL with this format:  https://geocode.xyz/52.508,13.381?geoit=json. Use the fetch API and promises to get the data. Do not use the 'getJSON' function we created, that is cheating 😉
+?   3. Once you have the data, take a look at it in the console to see all the attributes that you received about the provided location. Then, using this data, log a message like this to the console: “You are in Berlin, Germany”
+?   4. Chain a .catch method to the end of the promise chain and log errors to the console
+?   5. This API allows you to make only 3 requests per second. If you reload fast, you will get this error with code 403. This is an error with the request. Remember, fetch() does not reject the promise in this case. So create an error to reject the promise yourself, with a meaningful error message.
+*   PART 2 *
+?   6. Now it's time to use the received data to render a country. So take the relevant attribute from the geocoding API result, and plug it into the countries API that we have been using.
+?   7. Render the country and catch any errors, just like we have done in the last lecture (you can even copy this code, no need to type the same code) 
+*/
 
 const btn = document.querySelector(".btn-country");
 const countriesContainer = document.querySelector(".countries");
@@ -84,30 +86,31 @@ const whereAmI = function () {
         });
 };
 
-setTimeout(function () {
-    whereAmI(52.508, 13.381);
-    setTimeout(function () {
-        whereAmI(54.23527, -2.00622);
-        setTimeout(function () {
-            whereAmI(-33.933, 18.474);
-        }, 1000);
-    }, 1000);
-}, 1000);
+// setTimeout(function () {
+//     whereAmI(52.508, 13.381);
+//     setTimeout(function () {
+//         whereAmI(54.23527, -2.00622);
+//         setTimeout(function () {
+//             whereAmI(-33.933, 18.474);
+//         }, 1000);
+//     }, 1000);
+// }, 1000);
 
 // btn.addEventListener("click", whereAmI);
 
-// * Challenge #2 */
-// *** PART 1 *** //
-// 1. Create a function 'createImage' which receives 'imgPath' as an input. This function returns a promise which creates a new image (use document.createElement('img')) and sets the .src attribute to the provided image path
-// 2. When the image is done loading, append it to the DOM element with the 'images' class, and resolve the promise. The fulfilled value should be the image element itself. In case there is an error loading the image (listen for the'error' event), reject the promise
+/*
+*   Challenge #2 *
+*   PART 1 *
+?   1. Create a function 'createImage' which receives 'imgPath' as an input. This function returns a promise which creates a new image (use document.createElement('img')) and sets the .src attribute to the provided image path
+?   2. When the image is done loading, append it to the DOM element with the 'images' class, and resolve the promise. The fulfilled value should be the image element itself. In case there is an error loading the image (listen for the'error' event), reject the promise
 
-// *** PART 2 *** //
-// 1. Consume the promise using .then and also add an error handler
-// 2. After the image has loaded, pause execution for 2 seconds using the 'wait' function we created earlier
-// 3. After the 2 seconds have passed, hide the current image (set display CSS property to 'none'), and load a second image
-// 4. After the second image has loaded, pause execution for 2 seconds again
-// 5. After the 2 seconds have passed, hide the current image
-
+*   PART 2 *
+?   1. Consume the promise using .then and also add an error handler
+?   2. After the image has loaded, pause execution for 2 seconds using the 'wait' function we created earlier
+?   3. After the 2 seconds have passed, hide the current image (set display CSS property to 'none'), and load a second image
+?   4. After the second image has loaded, pause execution for 2 seconds again
+?   5. After the 2 seconds have passed, hide the current image
+*/
 const images = document.querySelector(".images");
 
 const wait = (seconds) =>
@@ -131,26 +134,77 @@ const createImg = function (imgPath) {
 
 let currImg;
 
-createImg("./img/img-1.jpg")
-    .then((img) => {
-        currImg = img;
-        return wait(2);
-    })
-    .then(() => {
-        currImg.style.display = "none";
-        return createImg("./img/img-2.jpg");
-    })
-    .then((img) => {
-        currImg = img;
-        return wait(2);
-    })
-    .then(() => {
-        currImg.style.display = "none";
-        return createImg("./img/img-3.jpg");
-    })
-    .then((img) => {
-        currImg = img;
-        return wait(2);
-    })
-    .then(() => (currImg.style.display = "none"))
-    .catch((err) => console.error(err));
+// createImg("./img/img-1.jpg")
+//     .then((img) => {
+//         currImg = img;
+//         return wait(2);
+//     })
+//     .then(() => {
+//         currImg.style.display = "none";
+//         return createImg("./img/img-2.jpg");
+//     })
+//     .then((img) => {
+//         currImg = img;
+//         return wait(2);
+//     })
+//     .then(() => {
+//         currImg.style.display = "none";
+//         return createImg("./img/img-3.jpg");
+//     })
+//     .then((img) => {
+//         currImg = img;
+//         return wait(2);
+//     })
+//     .then(() => (currImg.style.display = "none"))
+//     .catch((err) => console.error(err));
+
+/*
+*   Challenge #3
+*   Part 1
+?   1. Write an async function 'loadNPause' that recreates Challenge #2, this time using async/await (only the part where the promise is consumed, reuse the 'createImage' function from before)
+?   2. Compare the two versions, think about the big differences, and see which one you like more
+?   3. Don't forget to test the error handler, and to set the network speed to “Fast 3G” in the dev tools Network tab
+
+*   Part 2
+?   1. Create an async function 'loadAll' that receives an array of image paths 'imgArr'
+?   2. Use .map to loop over the array, to load all the images with the 'createImage' function (call the resulting array 'imgs')
+?   3. Check out the 'imgs' array in the console! Is it like you expected?
+?   4. Use a promise combinator function to actually get the images from the array 😉
+?   5. Add the 'parallel' class to all the images
+*/
+
+const loadNPause = async function () {
+    try {
+        let img = await createImg("./img/img-1.jpg");
+        await wait(2);
+
+        img.style.display = "none";
+
+        img = await createImg("./img/img-2.jpg");
+        await wait(2);
+
+        img.style.display = "none";
+
+        img = await createImg("./img/img-3.jpg");
+        await wait(2);
+
+        img.style.display = "none";
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+// loadNPause();
+
+const loadAll = async function (imgArr) {
+    try {
+        const imgs = await Promise.all(imgArr.map((img) => createImg(img)));
+        console.log(imgs);
+
+        imgs.forEach((img) => img.classList.add("parallel"));
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+loadAll(["img/img-1.jpg", "img/img-2.jpg", "img/img-3.jpg"]);
