@@ -19,3 +19,21 @@ console.log(testArr);
 testArr.pop();
 testArr.push("new", "elements", "added");
 showTestArr();
+
+//? top-level await (ES2022): we can now use await keyword outside the async function (in modules)
+const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+const data = await res.json();
+console.log(data);
+console.log("hello");
+
+//* top-level await can be useful when returning some data from an async function
+const getLastPost = async function () {
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const data = await res.json();
+    // console.log(data);
+
+    return { title: data.at(-1).title, text: data.at(-1).body };
+};
+
+const lastPost = await getLastPost();
+console.log(lastPost);
