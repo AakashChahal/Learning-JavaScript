@@ -37,3 +37,27 @@ const getLastPost = async function () {
 
 const lastPost = await getLastPost();
 console.log(lastPost);
+
+//? The Module Pattern (How modules were implemented before the addition of native modules)
+//! We used IIFE to make a script function as modules, Example 👇
+const ShoppingCart2 = (function () {
+    const shippingCost = 10;
+    const cart = [];
+    const totalPrice = 280;
+    const totalQty = 19;
+
+    const addToCart = function (product, quantity) {
+        cart.push({ product, quantity });
+        console.log(`${quantity} ${product} added to cart`);
+    };
+
+    return {
+        cart,
+        addToCart,
+        totalQty,
+        totalPrice,
+    };
+})();
+
+ShoppingCart2.addToCart("Oats", 3);
+ShoppingCart2.addToCart("Pasta", 3);
