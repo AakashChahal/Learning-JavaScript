@@ -38,8 +38,9 @@ const getLastPost = async function () {
 const lastPost = await getLastPost();
 console.log(lastPost);
 
-//? The Module Pattern (How modules were implemented before the addition of native modules)
-//! We used IIFE to make a script function as modules, Example 👇
+/*
+? The Module Pattern (How modules were implemented before the addition of native modules)
+! We used IIFE to make a script function as modules, Example 👇
 const ShoppingCart2 = (function () {
     const shippingCost = 10;
     const cart = [];
@@ -61,3 +62,19 @@ const ShoppingCart2 = (function () {
 
 ShoppingCart2.addToCart("Oats", 3);
 ShoppingCart2.addToCart("Pasta", 3);
+*/
+
+/*
+? CommonJS Module
+
+* Export
+export.addToCart = function (product, quantity) {
+        cart.push({ product, quantity });
+        console.log(`${quantity} ${product} added to cart`);
+    };
+    
+* Import
+const { addToCart } = require("./shoppingCart.js")
+
+! "export" and "require" are keywords available in node
+*/
