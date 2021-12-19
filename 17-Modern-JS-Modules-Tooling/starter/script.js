@@ -99,3 +99,6 @@ console.log(stateDeepClone);
 if (module.hot) {
     module.hot.accept();
 }
+
+// Polyfilling async functions
+import "regenerator-runtime/runtime";
