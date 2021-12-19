@@ -96,6 +96,6 @@ state.user.loggedIn = false;
 console.log(stateClone);
 console.log(stateDeepClone);
 
-// if (module.hot) {
-//     module.hot.accept();
-// }
+if (module.hot) {
+    module.hot.accept();
+}
