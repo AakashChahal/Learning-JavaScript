@@ -1,4 +1,6 @@
 import icons from "url:../img/icons.svg";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
 const recipeContainer = document.querySelector(".recipe");
 
@@ -17,6 +19,7 @@ const timeout = function (s) {
 ///////////////////////////////////////
 
 const renderSpinner = function (parentEl) {
+    parentEl.innerHTML = "";
     const markup = `
         <div class="spinner">
             <svg>
