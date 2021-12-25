@@ -1,10 +1,10 @@
-16374
+16377
 98C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\string_decoder132848931842168751 1
 108C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\abortcontroller-polyfill132848931856249283 1
 106C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\request\lib\cookies.js132848931840628698 0
 102C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\ansi-regex\license132848931834708479 0
 113C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\svgo\plugins\removeViewBox.js132848931866479676 0
-75C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist132848954096141350 1
+75C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist132849336202889192 1
 99C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\forkify-flowchart-part-1.png132833600721811655 0
 115C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\actual\object\assign.js132848931868299735 0
 120C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\stylehacks\dist\plugins\important.js132848931851439100 0
@@ -38,7 +38,7 @@
 98C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\balanced-match132848931842958804 1
 96C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\filesize\lib132848931850339071 1
 104C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\buffer-xor\inline.js132848931846848939 0
-83C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules132848932666871336 1
+83C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules132849335331496523 1
 99C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\forkify-flowchart-part-3.png132833600720981588 0
 113C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\actual\reflect\get.js132848931889170511 0
 102C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\sshpk\package.json132848931834588473 0
@@ -50,7 +50,7 @@
 95C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\caniuse-api132848931842938811 1
 126C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\@babel\core\lib\config\pattern-to-regex.js132848931860189432 0
 137C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\ansi-escapes\node_modules\type-fest\source\basic.d.ts132848931849499025 0
-81C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\index.html132848928401123398 0
+81C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\index.html132849160028549932 0
 111C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\source-map-js\lib\base64.js132848931842518772 0
 96C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\lowlight\lib132848931837648589 1
 145C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\css-modules-loader-core\node_modules\ansi-styles\package.json132848931835788523 0
@@ -62,8 +62,8 @@
 147C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\@babel\helper-compilation-targets\node_modules\semver\range.bnf132848931838108597 0
 131C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\split2\node_modules\readable-stream\readable.js132848931858599359 0
 106C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\minimist\test\parse.js132848931854359207 0
-88C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\package-lock.json132848932668052161 0
-83C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\package.json132848932668052161 0
+88C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\package-lock.json132849335332476597 0
+83C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\package.json132849335332486611 0
 102C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\yaml\browser\types132848931864309574 1
 125C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\request\node_modules\mime-db\package.json132848931848178987 0
 106C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\lodash\_cloneBuffer.js132848931869889784 0
@@ -112,7 +112,7 @@
 110C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\svgo\plugins\reusePaths.js132848931866739682 0
 103C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\color-name\index.js132848931837728587 0
 104C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\lodash\fp\compose.js132848931875810022 0
-91C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\src\js\controller.js132848954095041304 0
+91C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\src\js\controller.js132849336197366875 0
 108C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\react-refresh\runtime.js132848931849779055 0
 86C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\bl132848931852529148 1
 118C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\es-abstract\helpers\isPrimitive.js132848931878310104 0
@@ -257,7 +257,7 @@
 110C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\es-abstract\5\ToBoolean.js132848931886830418 0
 111C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\@types\node\perf_hooks.d.ts132848931864969604 0
 109C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\readable-stream\README.md132848931860399432 0
-102C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\.package-lock.json132848932668351953 0
+102C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\.package-lock.json132849335332776624 0
 93C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\@trysound132848931807275760 1
 123C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\terser\node_modules\commander\Readme.md132848931845838896 0
 103C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\create-ecdh\LICENSE132848931835028498 0
@@ -1066,6 +1066,7 @@
 111C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\es\instance\fill.js132848931885230361 0
 113C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\uri-js\dist\esnext\index.d.ts132848931864079577 0
 98C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\domelementtype132848931844328840 1
+93C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.05cf099e.js132849336202819172 0
 107C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\readable-stream\LICENSE132848931835558513 0
 112C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\svgo\plugins\_collections.js132848931845118863 0
 94C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\domhandler132848931849039013 1
@@ -2328,6 +2329,7 @@
 115C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\es-abstract\2021\GetIterator.js132848931874479951 0
 107C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\colord\plugins\lab.d.ts132848931863149536 0
 115C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\yaml\browser\types\timestamp.js132848931864349592 0
+97C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.05cf099e.js.map132849336202879178 0
 106C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\lodash.memoize\LICENSE132848931839608669 0
 95C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\string-hash132848931846018915 1
 115C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\modules\es.array.map.js132848931877180058 0
@@ -7774,7 +7776,7 @@
 104C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\lodash\assignWith.js132848931874769969 0
 127C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\highlight.js\scss\atelier-savanna-dark.scss132848931875399994 0
 100C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\lodash\before.js132848931874959981 0
-93C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\logo.c833fbb6.png132848947985944448 0
+93C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\logo.c833fbb6.png132849335812513669 0
 118C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\@parcel\core\src\resolveOptions.js132848931869909795 0
 98C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\lodash\bind.js132848931875009980 0
 103C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\lodash\camelCase.js132848931875169984 0
@@ -9486,6 +9488,7 @@
 123C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\features\async-iterator\find.js132848931886490407 0
 131C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\jsdom\lib\jsdom\living\nodes\ParentNode-impl.js132848931877500066 0
 142C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\jsdom\lib\jsdom\living\nodes\ProcessingInstruction-impl.js132848931877520065 0
+94C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\icons.e7078503.svg132849335812743690 0
 126C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\@babel\helpers\scripts\generate-helpers.js132848931854499234 0
 121C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\highlight.js\styles\androidstudio.css132848931847238948 0
 119C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\internals\function-apply.js132848931888360477 0
@@ -9782,7 +9785,7 @@
 131C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\icss-utils\node_modules\source-map\package.json132848931835688522 0
 98C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\jsbn\README.md132848931839398655 0
 106C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\js-tokens\CHANGELOG.md132848931837788602 0
-86C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.html132848947985854453 0
+86C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.html132849335812643670 0
 118C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\caniuse-lite\dist\lib\supported.js132848931882920290 0
 127C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\internals\object-is-prototype-of.js132848931896840787 0
 102C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\js-tokens\index.js132848931839858679 0
@@ -9837,7 +9840,7 @@
 117C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\features\array\reverse.js132848931899276172 0
 128C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\jake\node_modules\color-convert\package.json132848931835718510 0
 116C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\jake\node_modules\chalk\index.js132848931838028603 0
-93C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.430fc437.js132848954096101341 0
+93C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.430fc437.js132849159279535262 0
 113C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\jake\node_modules\chalk\types132848931848929014 1
 124C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\jake\node_modules\chalk\types\index.d.ts132848931849229028 0
 121C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\jake\node_modules\ansi-styles\license132848931840038680 0
@@ -14100,7 +14103,7 @@
 121C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\es\string\virtual\trim-end.js132848931903836100 0
 122C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\es\string\virtual\trim-left.js132848931903976111 0
 123C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\es\string\virtual\trim-start.js132848931904271408 0
-94C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.612625cb.css132848947985854453 0
+94C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.612625cb.css132849335812683686 0
 107C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\es\set\index.js132848931891080583 0
 116C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\es\regexp\constructor.js132848931873019914 0
 112C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\es\regexp\dot-all.js132848931875279993 0
@@ -14646,7 +14649,7 @@
 115C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\caniuse-lite\data\regions\IL.js132848931876870050 0
 101C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\brorand\README.md132848931839718669 0
 115C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\caniuse-lite\data\regions\IQ.js132848931877750085 0
-94C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\icons.b3083592.svg132848947985534437 0
+94C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\icons.b3083592.svg132849335815773916 0
 115C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\caniuse-lite\data\regions\JE.js132848931877840093 0
 109C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\@parcel\core\lib\utils.js132848931870709817 0
 115C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\caniuse-lite\data\regions\KG.js132848931878230104 0
@@ -16370,6 +16373,6 @@
 99C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\.bin\terser.cmd132848931906745487 0
 98C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\.bin\uncss.cmd132848931906745487 0
 98C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\.bin\which.cmd132848931906755492 0
-96C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\favicon.f563d3c3.png132848947985524462 0
-97C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.430fc437.js.map132848954096131363 0
-98C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.612625cb.css.map132848947985894454 0
+96C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\favicon.f563d3c3.png132849335815343881 0
+97C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.430fc437.js.map132849159279575283 0
+98C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.612625cb.css.map132849335812733676 0
