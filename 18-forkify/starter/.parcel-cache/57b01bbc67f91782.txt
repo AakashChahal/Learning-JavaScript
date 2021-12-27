@@ -4,7 +4,7 @@
 106C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\request\lib\cookies.js132848931840628698 0
 102C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\ansi-regex\license132848931834708479 0
 113C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\svgo\plugins\removeViewBox.js132848931866479676 0
-75C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist132849336202889192 1
+75C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist132850943395003923 1
 99C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\forkify-flowchart-part-1.png132833600721811655 0
 115C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\actual\object\assign.js132848931868299735 0
 120C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\stylehacks\dist\plugins\important.js132848931851439100 0
@@ -50,7 +50,7 @@
 95C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\caniuse-api132848931842938811 1
 126C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\@babel\core\lib\config\pattern-to-regex.js132848931860189432 0
 137C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\ansi-escapes\node_modules\type-fest\source\basic.d.ts132848931849499025 0
-81C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\index.html132849160028549932 0
+81C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\index.html132850941609087399 0
 111C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\source-map-js\lib\base64.js132848931842518772 0
 96C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\lowlight\lib132848931837648589 1
 145C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\css-modules-loader-core\node_modules\ansi-styles\package.json132848931835788523 0
@@ -112,7 +112,7 @@
 110C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\svgo\plugins\reusePaths.js132848931866739682 0
 103C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\color-name\index.js132848931837728587 0
 104C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\lodash\fp\compose.js132848931875810022 0
-91C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\src\js\controller.js132849336197366875 0
+91C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\src\js\controller.js132850943383526588 0
 108C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\react-refresh\runtime.js132848931849779055 0
 86C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\bl132848931852529148 1
 118C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\es-abstract\helpers\isPrimitive.js132848931878310104 0
@@ -1066,7 +1066,7 @@
 111C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\es\instance\fill.js132848931885230361 0
 113C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\uri-js\dist\esnext\index.d.ts132848931864079577 0
 98C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\domelementtype132848931844328840 1
-93C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.05cf099e.js132849336202819172 0
+93C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.05cf099e.js132850943394843944 0
 107C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\readable-stream\LICENSE132848931835558513 0
 112C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\svgo\plugins\_collections.js132848931845118863 0
 94C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\domhandler132848931849039013 1
@@ -2329,7 +2329,7 @@
 115C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\es-abstract\2021\GetIterator.js132848931874479951 0
 107C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\colord\plugins\lab.d.ts132848931863149536 0
 115C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\yaml\browser\types\timestamp.js132848931864349592 0
-97C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.05cf099e.js.map132849336202879178 0
+97C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.05cf099e.js.map132850943394923901 0
 106C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\lodash.memoize\LICENSE132848931839608669 0
 95C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\string-hash132848931846018915 1
 115C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\modules\es.array.map.js132848931877180058 0
@@ -9785,7 +9785,7 @@
 131C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\icss-utils\node_modules\source-map\package.json132848931835688522 0
 98C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\jsbn\README.md132848931839398655 0
 106C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\js-tokens\CHANGELOG.md132848931837788602 0
-86C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.html132849335812643670 0
+86C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\dist\index.html132850942924170170 0
 118C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\caniuse-lite\dist\lib\supported.js132848931882920290 0
 127C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\core-js\internals\object-is-prototype-of.js132848931896840787 0
 102C:\Users\aakas\OneDrive\Desktop\Learning-JavaScript\18-forkify\starter\node_modules\js-tokens\index.js132848931839858679 0
