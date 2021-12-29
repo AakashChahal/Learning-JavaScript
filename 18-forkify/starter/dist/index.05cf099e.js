@@ -460,8 +460,9 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"lA0Es":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _iconsSvg = require("url:../img/icons.svg");
-var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
+var _modelJs = require("./model.js");
+var _recipeViewJs = require("./views/recipeView.js");
+var _recipeViewJsDefault = parcelHelpers.interopDefault(_recipeViewJs);
 var _stable = require("core-js/stable");
 var _runtime = require("regenerator-runtime/runtime");
 const recipeContainer = document.querySelector(".recipe");
@@ -474,178 +475,28 @@ const timeout = function(s) {
 };
 // https://forkify-api.herokuapp.com/v2
 ///////////////////////////////////////
-const renderSpinner = function(parentEl) {
-    parentEl.innerHTML = "";
-    const markup = `
-        <div class="spinner">
-            <svg>
-                <use href="${_iconsSvgDefault.default}#icon-loader"></use>
-            </svg>
-        </div>
-    `;
-    parentEl.insertAdjacentHTML("afterbegin", markup);
-};
-const showRecipe = async function() {
+const controlRecipes = async function() {
     try {
         const id = window.location.hash.slice(1);
         // console.log(id);
         if (!id) return;
-        renderSpinner(recipeContainer);
-        const res = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`);
-        const data = await res.json();
-        if (!res.ok) throw new Error(`${res.status} ${data.message}`);
-        let { recipe  } = data.data;
-        recipe = {
-            id: recipe.id,
-            title: recipe.title,
-            publisher: recipe.publisher,
-            sourceUrl: recipe.source_url,
-            image: recipe.image_url,
-            servings: recipe.servings,
-            cookingTime: recipe.cooking_time,
-            ingredients: recipe.ingredients
-        };
-        console.log(recipe);
+        _recipeViewJsDefault.default.renderSpinner();
+        // loading a recipe
+        await _modelJs.loadRecipe(id);
         // rendering a recipe
-        const markup = `
-        <figure class="recipe__fig">
-            <img src="${recipe.image}" alt="${recipe.title}" class="recipe__img" />
-            <h1 class="recipe__title">
-                <span>${recipe.title}</span>
-            </h1>
-        </figure>
-
-        <div class="recipe__details">
-            <div class="recipe__info">
-                <svg class="recipe__info-icon">
-                    <use href="${_iconsSvgDefault.default}#icon-clock"></use>
-                </svg>
-                <span class="recipe__info-data recipe__info-data--minutes">${recipe.cookingTime}</span>
-                <span class="recipe__info-text">minutes</span>
-            </div>
-            <div class="recipe__info">
-                <svg class="recipe__info-icon">
-                    <use href="${_iconsSvgDefault.default}#icon-users"></use>
-                </svg>
-                <span class="recipe__info-data recipe__info-data--people">${recipe.servings}</span>
-                <span class="recipe__info-text">servings</span>
-
-                <div class="recipe__info-buttons">
-                    <button class="btn--tiny btn--increase-servings">
-                    <svg>
-                        <use href="${_iconsSvgDefault.default}#icon-minus-circle"></use>
-                    </svg>
-                    </button>
-                    <button class="btn--tiny btn--increase-servings">
-                    <svg>
-                        <use href="${_iconsSvgDefault.default}#icon-plus-circle"></use>
-                    </svg>
-                    </button>
-                </div>
-            </div>
-
-            <div class="recipe__user-generated">
-                <svg>
-                    <use href="${_iconsSvgDefault.default}#icon-user"></use>
-                </svg>
-            </div>
-            <button class="btn--round">
-                <svg class="">
-                    <use href="${_iconsSvgDefault.default}#icon-bookmark-fill"></use>
-                </svg>
-            </button>
-        </div>
-
-        <div class="recipe__ingredients">
-            <h2 class="heading--2">Recipe ingredients</h2>
-            <ul class="recipe__ingredient-list">
-                ${recipe.ingredients.map((ing)=>{
-            return `
-                        <li class="recipe__ingredient">
-                            <svg class="recipe__icon">
-                                <use href="${_iconsSvgDefault.default}#icon-check"></use>
-                            </svg>
-                            <div class="recipe__quantity">${ing.quantity}</div>
-                            <div class="recipe__description">
-                                <span class="recipe__unit">${ing.unit}</span>
-                                ${ing.description}
-                            </div>
-                        </li>
-                    `;
-        }).join("")}
-            </ul>
-        </div>
-
-        <div class="recipe__directions">
-            <h2 class="heading--2">How to cook it</h2>
-            <p class="recipe__directions-text">
-                This recipe was carefully designed and tested by
-                <span class="recipe__publisher">${recipe.publisher}</span>. Please check out
-                directions at their website.
-            </p>
-            <a
-                class="btn--small recipe__btn"
-                href="${recipe.sourceUrl}"
-                target="_blank"
-            >
-                <span>Directions</span>
-                <svg class="search__icon">
-                    <use href="${_iconsSvgDefault.default}#icon-arrow-right"></use>
-                </svg>
-            </a>
-        </div>`;
-        recipeContainer.innerHTML = "";
-        recipeContainer.insertAdjacentHTML("afterbegin", markup);
+        _recipeViewJsDefault.default.render(_modelJs.state.recipe);
     } catch (error) {
         console.error(error);
     }
 };
-showRecipe();
+controlRecipes();
 [
     "hashchange",
     "load"
-].forEach((event)=>window.addEventListener(event, showRecipe)
+].forEach((event)=>window.addEventListener(event, controlRecipes)
 );
 
-},{"url:../img/icons.svg":"5jwFy","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","core-js/stable":"95FYz","regenerator-runtime/runtime":"1EBPE"}],"5jwFy":[function(require,module,exports) {
-module.exports = require('./helpers/bundle-url').getBundleURL('71ti3') + "icons.e7078503.svg" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"chiK4"}],"chiK4":[function(require,module,exports) {
-"use strict";
-var bundleURL = {
-};
-function getBundleURLCached(id) {
-    var value = bundleURL[id];
-    if (!value) {
-        value = getBundleURL();
-        bundleURL[id] = value;
-    }
-    return value;
-}
-function getBundleURL() {
-    try {
-        throw new Error();
-    } catch (err) {
-        var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
-        if (matches) // The first two stack frames will be this function and getBundleURLCached.
-        // Use the 3rd one, which will be a runtime in the original bundle.
-        return getBaseURL(matches[2]);
-    }
-    return '/';
-}
-function getBaseURL(url) {
-    return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
-} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
-function getOrigin(url) {
-    var matches = ('' + url).match(/(https?|file|ftp):\/\/[^/]+/);
-    if (!matches) throw new Error('Origin not found');
-    return matches[0];
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-exports.getOrigin = getOrigin;
-
-},{}],"ciiiV":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","core-js/stable":"95FYz","regenerator-runtime/runtime":"1EBPE","./model.js":"1pVJj","./views/recipeView.js":"82pEw"}],"ciiiV":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -14923,6 +14774,376 @@ try {
     if (typeof globalThis === "object") globalThis.regeneratorRuntime = runtime;
     else Function("r", "regeneratorRuntime = r")(runtime);
 }
+
+},{}],"1pVJj":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "state", ()=>state
+);
+parcelHelpers.export(exports, "loadRecipe", ()=>loadRecipe
+);
+var _regeneratorRuntime = require("regenerator-runtime");
+const state = {
+    recipe: {
+    }
+};
+const loadRecipe = async function(id) {
+    try {
+        const res = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`);
+        const data = await res.json();
+        if (!res.ok) throw new Error(`${res.status} ${data.message}`);
+        const { recipe  } = data.data;
+        state.recipe = {
+            id: recipe.id,
+            title: recipe.title,
+            publisher: recipe.publisher,
+            sourceUrl: recipe.source_url,
+            image: recipe.image_url,
+            servings: recipe.servings,
+            cookingTime: recipe.cooking_time,
+            ingredients: recipe.ingredients
+        };
+        console.log(recipe);
+    } catch (error) {
+        alert(error);
+    }
+};
+
+},{"regenerator-runtime":"1EBPE","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"82pEw":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _iconsSvg = require("url:../../img/icons.svg");
+var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
+var _fractions = require("fractions");
+var _fractionsDefault = parcelHelpers.interopDefault(_fractions);
+console.log(_fractionsDefault.default);
+class RecipeView {
+    #parentElement = document.querySelector(".recipe");
+    #data;
+    render(data) {
+        this.#data = data;
+        const markup = this.#generateMarker();
+        this.#clear();
+        this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
+     #clear() {
+        this.#parentElement.innerHTML = "";
+    }
+    renderSpinner = function() {
+        this.#parentElement.innerHTML = "";
+        const markup = `
+            <div class="spinner">
+                <svg>
+                    <use href="${_iconsSvgDefault.default}#icon-loader"></use>
+                </svg>
+            </div>
+        `;
+        this.#parentElement.innerHTML = "";
+        this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    };
+     #generateMarker() {
+        return `
+        <figure class="recipe__fig">
+            <img src="${this.#data.image}" alt="${this.#data.title}" class="recipe__img" />
+            <h1 class="recipe__title">
+                <span>${this.#data.title}</span>
+            </h1>
+        </figure>
+
+        <div class="recipe__details">
+            <div class="recipe__info">
+                <svg class="recipe__info-icon">
+                    <use href="${_iconsSvgDefault.default}#icon-clock"></use>
+                </svg>
+                <span class="recipe__info-data recipe__info-data--minutes">${this.#data.cookingTime}</span>
+                <span class="recipe__info-text">minutes</span>
+            </div>
+            <div class="recipe__info">
+                <svg class="recipe__info-icon">
+                    <use href="${_iconsSvgDefault.default}#icon-users"></use>
+                </svg>
+                <span class="recipe__info-data recipe__info-data--people">${this.#data.servings}</span>
+                <span class="recipe__info-text">servings</span>
+
+                <div class="recipe__info-buttons">
+                    <button class="btn--tiny btn--increase-servings">
+                    <svg>
+                        <use href="${_iconsSvgDefault.default}#icon-minus-circle"></use>
+                    </svg>
+                    </button>
+                    <button class="btn--tiny btn--increase-servings">
+                    <svg>
+                        <use href="${_iconsSvgDefault.default}#icon-plus-circle"></use>
+                    </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="recipe__user-generated">
+                <svg>
+                    <use href="${_iconsSvgDefault.default}#icon-user"></use>
+                </svg>
+            </div>
+            <button class="btn--round">
+                <svg class="">
+                    <use href="${_iconsSvgDefault.default}#icon-bookmark-fill"></use>
+                </svg>
+            </button>
+        </div>
+
+        <div class="recipe__ingredients">
+            <h2 class="heading--2">Recipe ingredients</h2>
+            <ul class="recipe__ingredient-list">
+                ${this.#data.ingredients.map((ing)=>this.#generateMarkupIngredient(ing)
+        ).join("")}
+            </ul>
+        </div>
+
+        <div class="recipe__directions">
+            <h2 class="heading--2">How to cook it</h2>
+            <p class="recipe__directions-text">
+                This recipe was carefully designed and tested by
+                <span class="recipe__publisher">${this.#data.publisher}</span>. Please check out
+                directions at their website.
+            </p>
+            <a
+                class="btn--small recipe__btn"
+                href="${this.#data.sourceUrl}"
+                target="_blank"
+            >
+                <span>Directions</span>
+                <svg class="search__icon">
+                    <use href="${_iconsSvgDefault.default}#icon-arrow-right"></use>
+                </svg>
+            </a>
+        </div>`;
+    }
+     #generateMarkupIngredient(ing) {
+        return `
+                        <li class="recipe__ingredient">
+                            <svg class="recipe__icon">
+                                <use href="${_iconsSvgDefault.default}#icon-check"></use>
+                            </svg>
+                            <div class="recipe__quantity">${ing.quantity ? new _fractionsDefault.default(ing.quantity).toString() : ""}</div>
+                            <div class="recipe__description">
+                                <span class="recipe__unit">${ing.unit}</span>
+                                ${ing.description}
+                            </div>
+                        </li>
+                    `;
+    }
+}
+exports.default = new RecipeView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","url:../../img/icons.svg":"5jwFy","fractions":"2HsoT"}],"5jwFy":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('71ti3') + "icons.e7078503.svg" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"chiK4"}],"chiK4":[function(require,module,exports) {
+"use strict";
+var bundleURL = {
+};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return '/';
+}
+function getBaseURL(url) {
+    return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ('' + url).match(/(https?|file|ftp):\/\/[^/]+/);
+    if (!matches) throw new Error('Origin not found');
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"2HsoT":[function(require,module,exports) {
+var Fraction = function() {
+    this.numerator;
+    this.denominator;
+    var numerator = 0;
+    var denominator = 1;
+    var frac;
+    //If two numbers-like arguments are passed into the function
+    if (!isNaN(arguments[0]) && !isNaN(arguments[1])) {
+        numerator = Number(arguments[0]);
+        denominator = Number(arguments[1]);
+    } else if (!isNaN(arguments[0])) numerator = Number(arguments[0]);
+    else if (Fraction.isString(arguments[0])) {
+        var number = arguments[0];
+        if (number.indexOf('/') != -1) {
+            numerator = Number(number.substring(0, number.indexOf('/')));
+            denominator = Number(number.substring(number.indexOf('/') + 1, number.length));
+        } else numerator = number;
+    } else throw new Error("Arguments invalid");
+    if (!Number.isInteger(numerator) || !Number.isInteger(denominator)) {
+        if (!Number.isInteger(numerator)) numerator = Fraction.decimalToFraction(numerator);
+        if (!Number.isInteger(denominator)) denominator = Fraction.decimalToFraction(denominator);
+        frac = Fraction.divide(numerator, denominator);
+        numerator = frac.numerator;
+        denominator = frac.denominator;
+    }
+    if (denominator == 0) throw new Error("Cannot divide by zero");
+    this.numerator = numerator;
+    this.denominator = denominator;
+    this.simplify();
+};
+Fraction.prototype.multiply = function(frac) {
+    Fraction.correctArgumentLength(1, arguments.length);
+    return Fraction.change(this, Fraction.multiply(this, frac));
+};
+Fraction.prototype.divide = function(frac) {
+    Fraction.correctArgumentLength(1, arguments.length);
+    return Fraction.change(this, Fraction.divide(this, frac));
+};
+Fraction.prototype.add = function(frac) {
+    Fraction.correctArgumentLength(1, arguments.length);
+    return Fraction.change(this, Fraction.add(this, frac));
+};
+Fraction.prototype.subtract = function(frac) {
+    Fraction.correctArgumentLength(1, arguments.length);
+    return Fraction.change(this, Fraction.subtract(this, frac));
+};
+Fraction.prototype.simplify = function() {
+    Fraction.correctArgumentLength(0, arguments.length);
+    return Fraction.change(this, Fraction.simplify(this));
+};
+Fraction.prototype.toString = function() {
+    return Fraction.toString(this);
+};
+Fraction.prototype.equals = function(frac) {
+    return Fraction.equals(this, frac);
+};
+Fraction.prototype.valueOf = function() {
+    return Fraction.valueOf(this);
+};
+Fraction.add = function(frac1, frac2) {
+    Fraction.correctArgumentLength(2, arguments.length);
+    frac1 = Fraction.toFraction(frac1);
+    frac2 = Fraction.toFraction(frac2);
+    var newFrac = frac1;
+    newFrac.numerator = frac1.numerator * frac2.denominator + frac1.denominator * frac2.numerator;
+    newFrac.denominator = frac1.denominator * frac2.denominator;
+    return Fraction.simplify(newFrac);
+};
+Fraction.subtract = function(frac1, frac2) {
+    Fraction.correctArgumentLength(2, arguments.length);
+    frac1 = Fraction.toFraction(frac1);
+    frac2 = Fraction.toFraction(frac2);
+    var newFrac = frac1;
+    newFrac.numerator = frac1.numerator * frac2.denominator - frac1.denominator * frac2.numerator;
+    newFrac.denominator = frac1.denominator * frac2.denominator;
+    return Fraction.simplify(newFrac);
+};
+Fraction.multiply = function(frac1, frac2) {
+    Fraction.correctArgumentLength(2, arguments.length);
+    frac1 = Fraction.toFraction(frac1);
+    frac2 = Fraction.toFraction(frac2);
+    var newFrac = frac1;
+    newFrac.numerator = frac1.numerator * frac2.numerator;
+    newFrac.denominator = frac1.denominator * frac2.denominator;
+    return Fraction.simplify(newFrac);
+};
+Fraction.divide = function(frac1, frac2) {
+    Fraction.correctArgumentLength(2, arguments.length);
+    frac1 = Fraction.toFraction(frac1);
+    frac2 = Fraction.toFraction(frac2);
+    var newFrac = frac1;
+    newFrac.numerator = frac1.numerator * frac2.denominator;
+    newFrac.denominator = frac1.denominator * frac2.numerator;
+    return Fraction.simplify(newFrac);
+};
+Fraction.simplify = function(frac) {
+    Fraction.correctArgumentLength(1, arguments.length);
+    frac = Fraction.toFraction(frac);
+    var gcd = Fraction.greatestCommonDivisor(frac.numerator, frac.denominator);
+    if (gcd == 1) return frac;
+    frac.numerator /= gcd;
+    frac.denominator /= gcd;
+    return frac;
+};
+Fraction.greatestCommonDivisor = function(num1, num2) {
+    var greater;
+    var lesser;
+    num1 = Math.abs(num1);
+    num2 = Math.abs(num2);
+    greater = Math.max(num1, num2);
+    lesser = Math.min(num1, num2);
+    while(lesser != 0){
+        var t = lesser;
+        lesser = greater % lesser;
+        greater = t;
+    }
+    return greater;
+};
+Fraction.toString = function(frac) {
+    Fraction.correctArgumentLength(1, arguments.length);
+    if (frac.denominator == 1) return "" + frac.numerator;
+    return "" + frac.numerator + "/" + frac.denominator;
+};
+Fraction.equals = function(frac1, frac2) {
+    Fraction.correctArgumentLength(2, arguments.length);
+    frac1 = Fraction.toFraction(frac1);
+    frac2 = Fraction.toFraction(frac2);
+    frac1 = Fraction.simplify(frac1);
+    frac2 = Fraction.simplify(frac2);
+    return frac1.numerator == frac2.numerator && frac1.denominator == frac2.denominator;
+};
+Fraction.valueOf = function(frac) {
+    Fraction.correctArgumentLength(1, arguments.length);
+    frac = Fraction.toFraction(frac);
+    return frac.numerator / frac.denominator;
+};
+Fraction.correctArgumentLength = function(ideal, actual) {
+    if (ideal != actual) throw new Error("" + ideal + " arguments needed");
+};
+Fraction.change = function(oldFrac, newFrac) {
+    Fraction.correctArgumentLength(2, arguments.length);
+    oldFrac.numerator = newFrac.numerator;
+    oldFrac.denominator = newFrac.denominator;
+    return oldFrac;
+};
+Fraction.isString = function(s) {
+    return typeof s == "string" || typeof s == 'object' && s.constructor == String;
+};
+Fraction.fromFraction = function(frac) {
+    return typeof frac == 'object' && frac.constructor == Fraction;
+};
+Fraction.toFraction = function(x) {
+    if (!Fraction.fromFraction(x)) return new Fraction(x);
+    return x;
+};
+Fraction.decimalToFraction = function(x) {
+    Fraction.correctArgumentLength(1, arguments.length);
+    if (isNaN(x)) throw new Error("Argument invalid");
+    x = String(x);
+    var decLocation = x.indexOf('.');
+    if (decLocation != -1) {
+        var whole = x.substring(0, decLocation);
+        var isNegative = whole.indexOf('-') != -1 ? true : false;
+        var remainder = x.substring(decLocation + 1, x.length);
+        var nthPlace = Math.pow(10, remainder.length);
+        if (isNegative) return Fraction.subtract(new Fraction(Number(whole), 1), new Fraction(Number(remainder), nthPlace));
+        else return Fraction.add(new Fraction(Number(whole), 1), new Fraction(Number(remainder), nthPlace));
+    } else return new Fraction(Number(x));
+};
+if (typeof module !== "undefined" && module.exports) module.exports = Fraction;
 
 },{}]},["kS06O","lA0Es"], "lA0Es", "parcelRequire3a11")
 
