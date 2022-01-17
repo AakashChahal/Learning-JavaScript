@@ -6,11 +6,11 @@ class ResultView extends View {
     _errorMessage = "No recipe found! try searching again";
     _message = "";
 
-    _generateMarker() {
-        return this._data.map(this.#generateMarkerPreview).join("");
+    _generateMarkup() {
+        return this._data.map(this.#generateMarkupPreview).join("");
     }
 
-    #generateMarkerPreview(result) {
+    #generateMarkupPreview(result) {
         return `
             <li class="preview">
                 <a class="preview__link preview__link--active" href="#${result.id}">
