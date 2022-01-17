@@ -1,7 +1,7 @@
 import icons from "url:../../img/icons.svg";
 import Fraction from "fractions";
 
-console.log(Fraction);
+// console.log(Fraction);
 
 class RecipeView {
     #parentElement = document.querySelector(".recipe");
@@ -31,6 +31,12 @@ class RecipeView {
         this.#parentElement.innerHTML = "";
 
         this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    };
+
+    addHandlerRender = function (handler) {
+        ["hashchange", "load"].forEach((event) =>
+            window.addEventListener(event, handler)
+        );
     };
 
     #generateMarker() {
