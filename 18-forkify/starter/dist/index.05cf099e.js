@@ -487,6 +487,7 @@ const controlRecipes = async function() {
         _recipeViewJsDefault.default.render(_modelJs.state.recipe);
     } catch (error) {
         console.error(error);
+        _recipeViewJsDefault.default.renderError();
     }
 };
 const init = function() {
@@ -14803,7 +14804,8 @@ const loadRecipe = async function(id) {
         };
         console.log(recipe);
     } catch (error) {
-        alert(error);
+        // alert(error);
+        throw error;
     }
 };
 
@@ -14855,6 +14857,8 @@ var _fractionsDefault = parcelHelpers.interopDefault(_fractions);
 class RecipeView {
     #parentElement = document.querySelector(".recipe");
     #data;
+    #errorMessage = "No recipe found with the id: ";
+    #message = "";
     render(data) {
         this.#data = data;
         const markup = this.#generateMarker();
@@ -14864,7 +14868,7 @@ class RecipeView {
      #clear() {
         this.#parentElement.innerHTML = "";
     }
-    renderSpinner = function() {
+    renderSpinner() {
         this.#parentElement.innerHTML = "";
         const markup = `
             <div class="spinner">
@@ -14873,9 +14877,41 @@ class RecipeView {
                 </svg>
             </div>
         `;
-        this.#parentElement.innerHTML = "";
+        this.#clear();
         this.#parentElement.insertAdjacentHTML("afterbegin", markup);
-    };
+    }
+    renderError(message = this.#errorMessage) {
+        const markup = `
+            <div class="error">
+                <div>
+                    <svg>
+                        <use
+                            href="${_iconsSvgDefault.default}#icon-alert-triangle"
+                        ></use>
+                    </svg>
+                </div>
+                <p>${message}</p>
+            </div>
+        `;
+        this.#clear();
+        this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
+    renderError(message1 = this.#message) {
+        const markup = `
+            <div class="message">
+                <div>
+                    <svg>
+                        <use
+                            href="${_iconsSvgDefault.default}#icon-smile"
+                        ></use>
+                    </svg>
+                </div>
+                <p>${message1}</p>
+            </div>
+        `;
+        this.#clear();
+        this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
     addHandlerRender = function(handler) {
         [
             "hashchange",

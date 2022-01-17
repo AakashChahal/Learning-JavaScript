@@ -6,6 +6,8 @@ import Fraction from "fractions";
 class RecipeView {
     #parentElement = document.querySelector(".recipe");
     #data;
+    #errorMessage = "No recipe found with the id: ";
+    #message = "";
 
     render(data) {
         this.#data = data;
@@ -19,7 +21,7 @@ class RecipeView {
         this.#parentElement.innerHTML = "";
     }
 
-    renderSpinner = function () {
+    renderSpinner() {
         this.#parentElement.innerHTML = "";
         const markup = `
             <div class="spinner">
@@ -28,10 +30,46 @@ class RecipeView {
                 </svg>
             </div>
         `;
-        this.#parentElement.innerHTML = "";
 
+        this.#clear();
         this.#parentElement.insertAdjacentHTML("afterbegin", markup);
-    };
+    }
+
+    renderError(message = this.#errorMessage) {
+        const markup = `
+            <div class="error">
+                <div>
+                    <svg>
+                        <use
+                            href="${icons}#icon-alert-triangle"
+                        ></use>
+                    </svg>
+                </div>
+                <p>${message}</p>
+            </div>
+        `;
+
+        this.#clear();
+        this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
+
+    renderError(message = this.#message) {
+        const markup = `
+            <div class="message">
+                <div>
+                    <svg>
+                        <use
+                            href="${icons}#icon-smile"
+                        ></use>
+                    </svg>
+                </div>
+                <p>${message}</p>
+            </div>
+        `;
+
+        this.#clear();
+        this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
 
     addHandlerRender = function (handler) {
         ["hashchange", "load"].forEach((event) =>
