@@ -1,6 +1,7 @@
 import { async } from "regenerator-runtime";
 import { API_URL, RES_PER_PAGE } from "./config";
 import { getJSON } from "./helpers.js";
+import Fraction from "fractions";
 
 export const state = {
     recipe: {},
@@ -61,4 +62,11 @@ export const getSearchResultPage = function (page = state.search.page) {
     const end = page * state.search.resultsPerPage;
     // console.log(start, end);
     return state.search.results.slice(start, end);
+};
+
+export const updateServings = function (newServings) {
+    state.recipe.ingredients.forEach((ing) => {
+        ing.quantity = (ing.quantity * newServings) / state.recipe.servings;
+    });
+    state.recipe.servings = newServings;
 };
