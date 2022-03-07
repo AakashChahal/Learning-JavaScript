@@ -3,3 +3,4 @@ final/
 node_modules/
 17-Modern-JS-Modules-Tooling/starter/.parcel-cache/
 18-forkify/starter/.parcel-cache/
+.DS_Store
