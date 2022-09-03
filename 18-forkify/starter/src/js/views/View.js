@@ -16,6 +16,35 @@ export default class View {
         this._parentElement.innerHTML = "";
     }
 
+    update(data) {
+        this._data = data;
+        const newMarkup = this._generateMarkup();
+        const newDOM = document
+            .createRange()
+            .createContextualFragment(newMarkup);
+        const newElements = Array.from(newDOM.querySelectorAll("*"));
+        const currElements = Array.from(
+            this._parentElement.querySelectorAll("*")
+        );
+        newElements.forEach((newEl, i) => {
+            const currEl = currElements[i];
+            // updated elements only
+            if (
+                !newEl.isEqualNode(currEl) &&
+                newEl.firstChild?.nodeValue.trim() != ""
+            ) {
+                currEl.textContent = newEl.textContent;
+            }
+
+            // updating rest of the stuff accordinglly
+            if (!newEl.isEqualNode(currEl)) {
+                Array.from(newEl.attributes).forEach((attr) =>
+                    currEl.setAttribute(attr.name, attr.value)
+                );
+            }
+        });
+    }
+
     renderSpinner() {
         this._parentElement.innerHTML = "";
         const markup = `

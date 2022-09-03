@@ -487,6 +487,8 @@ const controlRecipes = async function() {
         // console.log(id);
         if (!id) return;
         _recipeViewJsDefault.default.renderSpinner();
+        // updating results view
+        _resultViewJsDefault.default.update(_modelJs.getSearchResultPage());
         // loading a recipe
         await _modelJs.loadRecipe(id);
         // rendering a recipe
@@ -517,7 +519,7 @@ const controlServings = function(newServing) {
     // update recipe servings in the data
     _modelJs.updateServings(newServing);
     // update the recipe view
-    _recipeViewJsDefault.default.render(_modelJs.state.recipe);
+    _recipeViewJsDefault.default.update(_modelJs.state.recipe);
 };
 const init = function() {
     _recipeViewJsDefault.default.addHandlerRender(controlRecipes);
@@ -1609,7 +1611,7 @@ const updateServings = function(newServings) {
     state.recipe.servings = newServings;
 };
 
-},{"regenerator-runtime":"dXNgZ","./config":"k5Hzs","./helpers.js":"hGI1E","fractions":"awG7q","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dXNgZ":[function(require,module,exports) {
+},{"regenerator-runtime":"dXNgZ","./config":"k5Hzs","./helpers.js":"hGI1E","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","fractions":"awG7q"}],"dXNgZ":[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -2610,6 +2612,22 @@ class View {
     _clear() {
         this._parentElement.innerHTML = "";
     }
+    update(data1) {
+        this._data = data1;
+        const newMarkup = this._generateMarkup();
+        const newDOM = document.createRange().createContextualFragment(newMarkup);
+        const newElements = Array.from(newDOM.querySelectorAll("*"));
+        const currElements = Array.from(this._parentElement.querySelectorAll("*"));
+        newElements.forEach((newEl, i)=>{
+            var ref;
+            const currEl = currElements[i];
+            // updated elements only
+            if (!newEl.isEqualNode(currEl) && ((ref = newEl.firstChild) === null || ref === void 0 ? void 0 : ref.nodeValue.trim()) != "") currEl.textContent = newEl.textContent;
+            // updating rest of the stuff accordinglly
+            if (!newEl.isEqualNode(currEl)) Array.from(newEl.attributes).forEach((attr)=>currEl.setAttribute(attr.name, attr.value)
+            );
+        });
+    }
     renderSpinner() {
         this._parentElement.innerHTML = "";
         const markup = `
@@ -2694,9 +2712,10 @@ class ResultView extends _viewDefault.default {
         return this._data.map(this.#generateMarkupPreview).join("");
     }
      #generateMarkupPreview(result) {
+        const id = window.location.hash.slice(1);
         return `
             <li class="preview">
-                <a class="preview__link preview__link--active" href="#${result.id}">
+                <a class="preview__link ${result.id == id ? "preview__link--active" : ""}" href="#${result.id}">
                     <figure class="preview__fig">
                         <img src="${result.image}" alt="${result.title}" />
                     </figure>
