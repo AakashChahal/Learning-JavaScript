@@ -1609,7 +1609,7 @@ const updateServings = function(newServings) {
     state.recipe.servings = newServings;
 };
 
-},{"regenerator-runtime":"dXNgZ","./config":"k5Hzs","./helpers.js":"hGI1E","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","fractions":"awG7q"}],"dXNgZ":[function(require,module,exports) {
+},{"regenerator-runtime":"dXNgZ","./config":"k5Hzs","./helpers.js":"hGI1E","fractions":"awG7q","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dXNgZ":[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
